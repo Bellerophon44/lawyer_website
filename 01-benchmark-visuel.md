@@ -158,27 +158,36 @@ Veille élargie en complément : Capstan, Flichy Grangé, Fromont Briens, Maxima
 
 ## 5. Direction artistique proposée pour le nouveau site
 
+> **Mise à jour post-audit & pivot stratégique** : le cabinet réoriente son positionnement à **100 % employeurs**. La DA est ajustée en conséquence (registre B2B, ton conseil de direction, photographie corporate). Le **logo CS bordeaux** existant est conservé et capitalisé — c'est l'ancrage de continuité qui rend la rupture acceptable.
+
 ### 5.1 Positionnement DA
-> **« Un cabinet qui rend le droit du travail lisible »** — sérieux du barreau, clarté éditoriale d'un magazine économique, chaleur d'un studio de conseil indépendant.
+> **« Le droit social au service de la décision RH »** — sérieux du barreau, clarté éditoriale d'un magazine économique (Les Échos, HBR France), précision opérationnelle d'un cabinet de conseil indépendant.
 
-Trois mots-clés DA : **éditorial — humain — précis**.
+Trois mots-clés DA : **éditorial — opérationnel — précis**.
 
-### 5.2 Palette (proposition disruptive sans cassure)
+Ton de marque : tutoiement professionnel du dirigeant (« vous savez ce que vous voulez, je vous dis comment l'obtenir légalement »). Ni paternaliste, ni distant. Pas de pathos, pas de juridisme inutile.
 
-Évitement explicite : bleu marine + or (Realyze), N&B pur (Vey), bleu KPMG.
+### 5.2 Palette (capitalisation logo + différenciation marché)
 
-Recommandation : **« Minimalisme chaud »** + un accent inattendu pour le secteur.
+Constat : le **bordeaux du monogramme CS** est déjà un actif de marque. Il est **maintenu en couleur primaire**. Cela répond précisément à la consigne « disruptif sans rupture » :
+- continuité de marque (le bordeaux est déjà là, dans le logo, dans la signature email, etc.) ;
+- différenciation marché (aucun concurrent direct n'utilise le bordeaux — Vey en N&B, Realyze en marine/or, KPMG/Capstan en bleu corporate, Flichy en gris).
 
-| Rôle | Couleur | Code | Usage |
+Évitement explicite : bleu marine + or (Realyze), N&B pur (Vey), bleu corporate (KPMG / Capstan / Fromont).
+
+| Rôle | Couleur | Code (à caler sur SVG HD du logo) | Usage |
 |---|---|---|---|
-| Fond principal | Ivoire / craie | `#F5F1EA` | Pages, respiration |
-| Texte / encre | Encre profonde | `#101418` | Titres, corps |
-| Primaire de marque | Vert forêt sombre | `#1F3A2E` | Header, boutons, ancres |
-| Accent vibrant | Terracotta | `#C9603A` | CTA, surlignage, datavisualisation |
-| Neutre froid | Gris pierre | `#7A7A78` | Métadonnées, séparateurs |
-| Surface alt. | Sable | `#E8DFCF` | Cartes, sections |
+| **Primaire de marque** | **Bordeaux Schumpf** | `~#7E1F2A` | Logo, liens, hover, accents, datavisualisation |
+| Primaire foncé | Bordeaux nuit | `~#4A1219` | Headers, fonds dramatiques, boutons primaires |
+| Encre / texte | Graphite | `~#1E1E1E` | Titres, corps |
+| Fond principal | Ivoire chaud | `#F6F1E9` | Pages — sortie du « tout blanc clinique » |
+| Surface alt. | Pierre | `#E6DED0` | Cartes, sections, encarts |
+| Neutre | Gris ardoise | `#7A7A78` | Métadonnées, séparateurs, légendes |
+| Accent éditorial (parcimonie) | Cuivre patiné | `#B07C4D` | Surlignage texte, filets éditoriaux, indices |
 
-Variante dark mode (option) : encre `#0E1411`, surface `#19211C`, accent terracotta inchangé, texte ivoire.
+Variante dark mode (option, switch utilisateur) : fond `#15110F`, surface `#221A18`, bordeaux conservé en hover, texte ivoire `#F0E8DC`.
+
+> Note : les codes hex sont à calibrer définitivement une fois le **SVG HD du logo** transmis (pour synchroniser exactement le bordeaux primaire et le gris du C).
 
 ### 5.3 Typographie
 
@@ -190,22 +199,29 @@ Système bi-fonte clair :
 Échelle type (desktop) : 14 / 16 / 18 / 22 / 28 / 36 / 48 / 64 / 88 px. Titres hero `clamp(48px, 6vw, 96px)`.
 
 ### 5.4 Signature graphique
-- **Monogramme de cabinet** travaillé comme sceau / tampon (cf. Realyze) → décliné en favicon, watermark de section, séparateur, motif de footer.
-- **Trait éditorial** : une fine règle horizontale (`1px` encre) systématique au-dessus des sections, comme dans un magazine.
+- **Monogramme CS bordeaux** (existant) **conservé et capitalisé** : décliné en favicon, watermark de section, séparateur, motif de footer, sceau d'article de blog. C'est l'élément qui crée la continuité avec l'historique de marque.
+- Version **vectorielle propre** à produire à partir du logo HD transmis.
+- **Trait éditorial** : fine règle horizontale (`1px` graphite) systématique au-dessus des sections, comme dans un magazine.
+- **Filets bordeaux** parcimonieux (1–2 px) pour séparer les chapitres / encadrer les chiffres-clés.
 
-### 5.5 Photographie & iconographie
-- Photographie **couleur** (et non N&B) — distinction nette vs Vey.
-- Style **lumière naturelle, grain léger, traitement chaud**, fonds réels (cabinet, Paris, mobilier bois / textile).
-- Portraits d'avocats : cadrage rapproché, regard caméra ou trois-quarts, lumière douce, fond uni couleur sable / forêt.
-- Iconographie : **picto sur-mesure traits fins** (1.25px), pas de stock iconographique générique.
+### 5.5 Photographie & iconographie (registre B2B)
+- Photographie **couleur**, traitement chaud, lumière naturelle, grain léger — distinction nette vs Vey (N&B) et vs stock juridique habituel (balance, marteau).
+- **Contextes business** : salles de réunion, open-space, atelier industriel, chantier, vestiaire d'usine, entrepôt logistique — tous lieux où l'entreprise rencontre le droit du travail. Pas de palais de justice, pas de bibliothèque de codes.
+- **Portrait avocate à refaire** : cadrage rapproché, regard caméra, lumière directionnelle douce, fond uni couleur pierre ou bordeaux désaturé, tenue formelle business (pas robe d'avocat). Le portrait actuel (chaise blanche design, fond texturé) est à remplacer.
+- **Détails d'atelier** : carnet annoté, écran d'ordinateur, signature, poignée de porte d'un bureau — micro-narration cabinet.
+- Iconographie : **pictos sur-mesure traits fins** (1.25px) sur les thématiques RH/social — pas de stock generic. À bannir : balance, marteau, colonnes grecques, poignée de main.
 
-### 5.6 Mise en page & composants
-- **Hero éditorial** : grand titre sérif, sous-titre sans-sérif, aucun visuel-slogan agressif. Une ligne de citation en italique.
-- **Bento d'expertises** : 4-6 cartes, micro-illustrations, accroche courte, lien « Lire l'expertise ».
-- **Pages avocat** type **fiche presse** : portrait pleine hauteur à gauche, biographie éditoriale à droite, encadré « domaines / barreau / langues », publications listées comme une bibliographie.
-- **Section actualités / décryptages** mise en avant — c'est là que se joue la modernité (positionnement « le droit du travail expliqué »).
-- **Calculateurs / outils** (indemnités, préavis, etc.) en composants interactifs : signal de modernité fonctionnelle fort, ROI SEO élevé.
-- **Footer dense, type ours de magazine** : adresse, barreau, mentions, plan, langues, RSS.
+### 5.6 Mise en page & composants (architecture B2B)
+- **Hero éditorial** : grand titre sérif sur ivoire (« *Le droit social, au rythme de votre entreprise.* »), sous-titre sans-sérif, micro-baseline (« Avocate au Barreau de Metz — Conseil & contentieux employeur »), un CTA primaire bordeaux « Réserver un diagnostic » + un CTA secondaire texte « Voir les expertises ».
+- **Bento d'expertises** : 3 cartes piliers (Droit du travail / Droit pénal du travail / Sécurité sociale & URSSAF), chacune ouvrant sur sa page pilier + sous-pages SEO.
+- **Switch persona** explicite : « *Vous êtes…* Dirigeant TPE · DRH PME · Direction juridique » — chaque branche route vers un parcours et des contenus dédiés. Remplace l'ancien split Salarié / Employeur.
+- **Encarts cas client anonymisés** : « Comment nous avons ramené un redressement URSSAF de 180 k€ à 25 k€ » — typo éditoriale, chiffre saillant en bordeaux.
+- **Page avocate** type **fiche presse / About** : portrait pleine hauteur à gauche, biographie éditoriale à droite, encadré « Barreau · Formation · Langues · Adhésions », publications & prises de parole listées comme une bibliographie.
+- **Page Méthode & honoraires** dédiée et **transparente** : grille tarifaire, forfaits opérations RH récurrentes, **abonnement RH PME** (offre nouvelle à valider), exemples de conventions.
+- **Section « Décryptages »** (blog rapatrié) en home + page d'index — c'est là que se joue la modernité éditoriale.
+- **Outils interactifs B2B** : calculateur d'indemnité de licenciement (barème Macron), estimateur de coût de litige prud'hommal, diagnostic de conformité RH (10 questions → score + livre blanc), vérificateur de prescription URSSAF.
+- **Logos secteurs clients** (« Industrie · BTP · Retail · Services ») en frise discrète.
+- **Footer dense, type ours de magazine** : adresse cabinet (4 rue Paul Langevin, Metz), barreau, contacts, plan, RSS Décryptages, LinkedIn (canal #1), mentions légales, RGPD.
 
 ### 5.7 Interactions & animation
 - Scroll lisse (Lenis), apparitions au scroll très sobres (fade + 8px translate), 400–600 ms.
@@ -222,13 +238,17 @@ Système bi-fonte clair :
 
 ## 6. Ce qu'il faut explicitement **ne pas faire**
 
-- ❌ Reproduire le tout-N&B de Vey (déjà fait, et trop hiératique pour le droit du travail B2C-friendly).
+- ❌ Reproduire le tout-N&B de Vey (trop hiératique, et le bordeaux du logo se perdrait).
 - ❌ Reprendre le marine + or de Realyze (saturé sur le marché des cabinets boutiques).
 - ❌ Adopter une grille bleu corporate type KPMG / Capstan (mer de sameness).
-- ❌ Photo stock « poignée de main » / « balance de Thémis » / marteau de juge.
+- ❌ Photo stock « poignée de main » / « balance de Thémis » / marteau de juge / colonnes grecques.
 - ❌ Slider hero, carrousel témoignages, badges « 5 étoiles ».
-- ❌ Animations gratuites (parallax lourd, curseur custom, intro cinétique de 4s avant accès au contenu).
-- ❌ Mode sombre par défaut — proposé en switch uniquement.
+- ❌ Animations gratuites (parallax lourd, curseur custom, intro cinétique de 4s).
+- ❌ Mode sombre par défaut — switch utilisateur uniquement.
+- ❌ Mention « particuliers » ou « salariés » dans le wording (pivot 100 % employeur).
+- ❌ Reprendre l'iconographie balance / poignée de main du site actuel (page Approche).
+- ❌ Reprendre l'annotation manuscrite « *Cliquez ici, prenez RDV !* » (datée).
+- ❌ Reprendre le portrait actuel sur chaise blanche (lumière plate, fond démodé) — nouveau shooting requis.
 
 ---
 

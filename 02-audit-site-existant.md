@@ -1,296 +1,325 @@
 # Audit du site existant — `schumpf-avocat.com`
 
-> Objectif : extraire l'ensemble du contenu fonctionnel du site actuel pour alimenter la refonte (cartographie d'information, contenu, parcours, design).
-> Source : pages indexées du domaine + annuaires d'avocats (Consultation.avocat.fr, Doctrine, Pappers Justice, PagesDuPalais, Justifit, Lawzana, MonExpertDuDroit, PagesJaunes, EU-Avocat, Mappy, LinkedIn).
-> **Limite méthodologique** : l'hébergement (vraisemblablement Wix) refuse les requêtes des outils de fetch automatisés (403). L'audit **visuel** reste partiel et devra être complété par une capture d'écran ou un dump HTML transmis manuellement. Le **contenu fonctionnel**, en revanche, est consolidé ici.
+> Objectif : extraire le contenu fonctionnel actuel pour cadrer la refonte (cartographie, contenu, parcours, design).
+> Sources : captures d'écran desktop transmises par le client (Accueil, Approche, Votre Avocate, Compétences pilier + 3 sous-pages, Contact) + logo HD + annuaires juridiques (Doctrine, Pappers Justice, PagesDuPalais, Justifit, MonExpertDuDroit, etc.).
+> **Mise à jour majeure** : réorientation stratégique **100 % employeur** validée par Coralie Schumpf — l'architecture, le wording et les CTAs du site refondu doivent supprimer toute mention « salarié ».
 
 ---
 
-## 1. Identité du cabinet
+## 1. Identité du cabinet (corrigée)
 
 | Élément | Valeur |
 |---|---|
-| Nom du cabinet | Cabinet **Coralie SCHUMPF**, Avocat |
+| Nom | **Cabinet Coralie SCHUMPF — Avocat** |
 | Titulaire | Maître Coralie SCHUMPF |
 | Barreau | **Barreau de Metz** |
-| Prestation de serment | 17 décembre 2015 (≈ 10 ans d'exercice en 2026) |
-| Forme | Avocat individuel (cabinet boutique mono-avocat) |
-| Adresse principale | **1 rue des Charpentiers, 57070 Metz** (Moselle, Grand Est) |
-| Adresse historique mentionnée | 4 rue Paul Langevin, 57070 Metz *(à vérifier — peut-être ancienne)* |
-| Téléphone | **07 69 00 45 58** |
-| Site | `schumpf-avocat.com` |
-| LinkedIn | `linkedin.com/in/coralie-schumpf-4311549a` |
-| Twitter / X | `@coralieschumpf` |
-| Blog tiers | `consultation.avocat.fr/blog/coralie-schumpf/` |
-| Zone d'intervention déclarée | Grand Est (Metz, Thionville et Moselle / Lorraine) |
+| Prestation de serment | 17 décembre 2015 (~ 10 ans d'exercice) |
+| Forme | Avocat individuel (cabinet mono-avocat) |
+| **Adresse postale réelle** | **4 rue Paul Langevin (Maison des Industries et Technologies), 57070 Metz** |
+| Téléphone | 07 69 00 45 58 |
+| Fax | 03 87 31 36 37 |
+| E-mail officiel | **coralie.schumpf@schumpf-avocat.com** |
+| Site | `schumpf-avocat.com` (Wix Studio) |
+| LinkedIn | `coralie-schumpf-4311549a` |
+| Instagram | présent (icône footer/header) — handle à confirmer |
+| Facebook | présent (icône footer/header) — handle à confirmer |
+| X / Twitter | `@coralieschumpf` (historique, présence faible) |
+| Statut affiché en page Contact | Mention « *Actuellement en congé maternité jusqu'au 1er octobre 2025* » (à retirer si périmée à la refonte) |
 
-### Baseline actuelle (déduite des balises de titre)
-- Homepage : **« Avocat Metz | Droit du travail | Coralie Schumpf Avocat »**
-- Pages expertises : suffixe **« | Grand Est | Coralie Schumpf avocat »**
-
-➡️ SEO local fortement orienté **« avocat droit du travail Metz / Grand Est »**.
+> ⚠️ Correction par rapport à l'audit v1 : l'adresse cabinet est **4 rue Paul Langevin** (et non rue des Charpentiers — celle-ci apparaît dans certains annuaires obsolètes).
 
 ---
 
-## 2. Positionnement & clientèle
+## 2. Positionnement actuel et **pivot stratégique**
 
-### Positionnement éditorial actuel
-> « Avocat en droit du travail à Metz, qui intervient aux côtés des **employeurs et des salariés** en droit du travail, droit de la sécurité sociale et droit pénal du travail. »
+### 2.1 Positionnement actuel du site (état des lieux à supprimer)
+Accroche actuelle, page Compétences > Droit du travail :
+> « **Un employeur serein. Des salariés protégés.** »
 
-### Clientèle ciblée
-- **Salariés** (contentieux prud'hommal, licenciement, harcèlement, AT/MP)
-- **Employeurs / dirigeants** (conseil, rédaction, défense pénale)
-- **TPE-PME locales** (Grand Est)
+→ Double cible explicitement assumée : section « VOUS ÊTES SALARIÉ(E) » + section « VOUS ÊTES EMPLOYEUR ».
+→ Page « Votre Avocate » mentionne : « *Trop de justiciables, notamment les particuliers et les petites entreprises…* » (registre B2C).
 
-> Le double ciblage employeurs / salariés est explicitement assumé — c'est un parti pris à conserver ou à clarifier (souvent perçu comme un grand écart à expliciter).
+### 2.2 Nouveau positionnement cible (refonte)
+**Pivot stratégique 100 % employeur** validé par Coralie Schumpf.
 
-### Promesse / valeurs mises en avant
-- **Écoute et dialogue**
-- **Proximité, transparence, disponibilité**
-- **Confidentialité et sécurité juridique**
-- **Pas de débours avant signature de la convention d'honoraires** (« pas de surprises »)
-- **Aide juridictionnelle acceptée** (accessibilité)
+Positionnement de marque proposé :
+> **« L'avocate des employeurs en droit social — Metz & Grand Est. »**
 
----
+Promesse :
+> *Sécuriser vos décisions RH, défendre votre entreprise, préserver votre dialogue social — du conseil quotidien à la barre du Conseil de Prud'hommes.*
 
-## 3. Domaines d'expertise (offre fonctionnelle)
+**Cibles confirmées (toutes B2B)** :
+- Dirigeants de **TPE / PME** (10–250 salariés) du Grand Est
+- **DRH / RRH** internes et externalisés
+- **Directions juridiques** de groupes (en appui local Metz / Thionville / Sarrebruck)
+- **Cadres dirigeants** (en défense personnelle dans les contentieux pénaux du travail)
+- **Experts-comptables / cabinets de conseil RH** prescripteurs
 
-Trois pôles structurent le site actuel, correspondant aux trois pages d'expertise.
-
-### 3.1 Droit du travail (`/droit-du-travail`)
-**Cible** : salariés et employeurs.
-**Prestations identifiées** :
-- Représentation devant le **Conseil de Prud'hommes** (demande ou défense)
-- Calcul et **négociation des indemnités** de licenciement / rupture
-- **Rédaction de contrats** de travail
-- **Négociation** des intérêts du salarié auprès de l'employeur
-- Conseil sur conformité à la réglementation du travail
-- Contentieux : licenciement abusif, **harcèlement** au travail
-
-### 3.2 Droit pénal du travail (`/droit-penal-du-travail`)
-**Cible** : entreprises, dirigeants, salariés.
-**Prestations identifiées** :
-- Préparation et suivi des **procédures pénales** engagées contre l'entreprise ou ses dirigeants
-- **Défense devant les juridictions pénales**
-- Couvre typiquement : travail dissimulé, infractions à la sécurité au travail, mise en danger, entrave, prêt illicite de main-d'œuvre, etc.
-
-### 3.3 Droit de la sécurité sociale (`/droit-de-la-securite-sociale`)
-**Cible** : salariés et employeurs.
-**Prestations identifiées** :
-- Contentieux **sécurité sociale** (Pôle social du TJ)
-- Litiges sur **taux d'incapacité**
-- **Accidents du travail** et **maladies professionnelles** (AT/MP)
-- Représentation et conseil sur reconnaissance, contestation, faute inexcusable
+**Cibles supprimées du site refondu** :
+- ❌ Salariés (particuliers)
+- ❌ Représentants du personnel hors mandat employeur
+- ❌ Aide juridictionnelle individuelle (à retirer)
 
 ---
 
-## 4. Modes de consultation & honoraires
+## 3. Domaines d'expertise — **reformulés côté employeur**
 
-| Mode | Durée | Tarif déclaré | Usage |
-|---|---|---|---|
-| 1er RDV en cabinet | 30 min | **Gratuit, sans engagement** | Faire connaissance, qualifier la problématique |
-| Consultation vidéo | 30 min | Payante (montant non public) | Réponse concrète à distance |
-| Consultation téléphonique | 15 min | Payante (montant non public) | Réponse rapide |
-| Réponse écrite | — | Payante (montant non public) | Question juridique précise |
+Les trois pôles sont conservés mais le contenu et les bullet points sont **intégralement réécrits** dans une logique de service à l'entreprise.
 
-**Tarification** : pas de grille publique. Mention rassurante :
-- discussion d'honoraires « franche »,
-- **convention d'honoraires signée avant tout débours**,
-- pas de surprise en cours de procédure,
-- **aide juridictionnelle acceptée**.
+### 3.1 Droit du travail & droit social — *« Sécuriser vos décisions RH »*
+**Conseil & ingénierie sociale**
+- Audit RH & due diligence sociale
+- Rédaction et négociation : contrats de travail, clauses spécifiques (non-concurrence, mobilité, forfait-jours)
+- Règlement intérieur, chartes (informatique, télétravail, déontologie)
+- Accord d'entreprise, négociation collective
+- Mise en place et organisation des élections du **CSE**
+- Mise en conformité (durée du travail, égalité F/H, BDESE, index)
 
-**Réservation** : page dédiée `/reserver-en-ligne` (interface de booking).
+**Contentieux & défense entreprise**
+- **Défense devant le Conseil de Prud'hommes**
+- Procédures de licenciement (motif personnel, économique, faute grave/lourde, inaptitude)
+- Rupture conventionnelle (individuelle et collective)
+- Contentieux des heures supplémentaires, forfait-jours, requalifications CDD → CDI
+- Gestion de crise : harcèlement allégué, alerte, enquête interne
+
+> Wording actuel à supprimer : la section « VOUS ÊTES SALARIÉ(E) » de la page Droit du travail (capture confirmée).
+
+### 3.2 Droit pénal du travail — *« Défendre vos dirigeants, protéger votre entreprise »*
+**Défense pénale entreprise et dirigeant**
+- Délit d'entrave (CSE, syndicats)
+- Travail dissimulé, recours abusif aux contrats précaires
+- Prêt illicite de main-d'œuvre, marchandage, sous-traitance
+- Hygiène et sécurité — accident grave / mortel (mise en danger)
+- Discrimination, harcèlement (volet pénal)
+- Durée du travail (infractions)
+- Accompagnement de la garde à vue du dirigeant, audition libre
+
+> Le contenu existant (cf. capture « Droit Pénal du Travail ») est déjà presque exclusivement B2B — peu de wording à modifier, juste retirer « *et leurs salariés* » dans la phrase d'intro.
+
+### 3.3 Droit de la sécurité sociale — *« Maîtriser votre risque social et URSSAF »*
+**Côté entreprise uniquement**
+- **Contentieux du redressement URSSAF** (recours CRA, Pôle social)
+- Contestation du caractère professionnel d'un AT / MP
+- **Faute inexcusable de l'employeur** : défense et conséquences financières
+- Suivi des expertises et contestation des préjudices indemnisables
+- Contentieux du **taux d'incapacité permanente** devant le pôle social
+
+> Le contenu existant (cf. capture « Droit de la Sécurité Sociale ») est déjà B2B-only. À conserver presque tel quel.
 
 ---
 
-## 5. Arborescence actuelle du site
+## 4. Méthode & honoraires (refonte côté employeur)
 
-Pages identifiées via les moteurs (l'arborescence réelle peut être plus large) :
+### 4.1 Méthode actuelle affichée
+Triptyque visuel (page « Approche »), à conserver / reformuler :
+1. **SE RENCONTRER** — *« Un premier rendez-vous gratuit pour présenter votre affaire »*
+2. **SE METTRE D'ACCORD** — *« Une ligne de défense vous est présentée. Un devis vous est proposé. C'est vous qui décidez. »*
+3. **SE DÉFENDRE** — *« Votre avocat vous conseille et se charge de la procédure dans son ensemble. »*
+
+→ Le triptyque fonctionne en B2B. Reformulation proposée :
+1. **Cadrer** — Diagnostic gratuit, qualification du dossier, identification des enjeux RH / financiers / réputationnels.
+2. **Engager** — Convention d'honoraires claire, périmètre cadré, calendrier partagé.
+3. **Défendre** — Conseil au quotidien ou contentieux, vous restez décisionnaire à chaque étape.
+
+### 4.2 Valeurs actuelles (page « Votre Avocate »)
+Triptyque **PROXIMITÉ / DISPONIBILITÉ / TRANSPARENCE** — à conserver mais réécrire en registre B2B (« interlocuteur unique », « réactivité 48 h », « budget maîtrisé », plutôt que « lien de confiance » / « justiciable »).
+
+### 4.3 Honoraires (refonte)
+- **1er RDV** : maintenir la gratuité mais le repositionner en « **Entretien de diagnostic** » (gratuit, 30 min, en cabinet ou visio) — wording B2B.
+- **Convention d'honoraires** systématique avant tout débours ✅ argument fort, à conserver.
+- **Forfait** sur opérations récurrentes (rédaction contrat, audit, mise en conformité) — à mettre en avant.
+- **Honoraires au temps passé** pour le contentieux, taux horaire affiché ou plages indicatives.
+- **Abonnement RH** pour les PME (option à valider avec Coralie) — service récurrent type « avocate à la demande ».
+- ❌ Retirer la mention « aide juridictionnelle » (non pertinente en B2B).
+
+---
+
+## 5. Arborescence actuelle (confirmée par les captures)
 
 ```
-/                            Accueil
-/droit-du-travail            Expertise 1
-/droit-penal-du-travail      Expertise 2
-/droit-de-la-securite-sociale Expertise 3
-/reserver-en-ligne           Prise de RDV
+/                                  ACCUEIL
+/approche                          APPROCHE          (méthode 3 étapes)
+/votre-avocate                     VOTRE AVOCATE     (portrait + valeurs)
+/competences                       COMPETENCES       (page pilier)
+  /droit-du-travail                  └ Droit du travail
+  /droit-penal-du-travail            └ Droit pénal du travail
+  /droit-de-la-securite-sociale      └ Droit de la sécurité sociale
+/contact                           CONTACT           (adresse + map + form)
+/reserver-en-ligne                 RDV (lien externe / module Wix)
 ```
 
-**Pages absentes ou non identifiées** (à vérifier ou à ajouter) :
-- Page **« À propos »** / biographie Coralie Schumpf (parcours, formation, publications).
-- Page **« Méthode / honoraires »** explicite.
-- **Blog** / actualités juridiques (l'avocate publie sur consultation.avocat.fr en externe — l'audience SEO échappe au domaine).
-- Page **« Témoignages / avis »** (les annuaires en hébergent à sa place).
-- **Mentions légales / RGPD / cookies / CGV** (obligatoires pour un cabinet).
-- Page **« Contact »** dédiée distincte de la prise de RDV.
-- Versions linguistiques (Metz = zone frontalière Luxembourg / Allemagne — l'**allemand** et l'**anglais** seraient des leviers crédibles).
+**Menu actuel** (constaté sur toutes les captures) : `ACCUEIL · APPROCHE · VOTRE AVOCATE · COMPETENCES · CONTACT` — sobre, plat, sans sous-menu déroulant visible.
+
+**Réseaux sociaux** présents en bas du hero d'accueil : LinkedIn · Instagram · Facebook.
 
 ---
 
-## 6. Présence digitale et écosystème
+## 6. Identité visuelle existante (analyse à partir des captures)
 
-| Canal | Présence | Levier |
+### 6.1 Logo
+- **Monogramme « CS »** travaillé en lettres sérif élégantes ; le S est dominant, le C en gris foncé / charcoal vient s'y adosser.
+- Wordmark **« CORALIE SCHUMPF »** en capitales sérif fines + sous-titre **« Avocat »** en sans-sérif / sérif léger.
+- Couleur signature : **bordeaux profond** sur le S (estimé `~#7E1F2A` à confirmer sur le SVG HD).
+- Couleur complémentaire : **gris graphite** (estimé `~#3F3F3F`) sur le C.
+- ✅ **Le logo est un actif fort** : sobriété sérif + monogramme + bordeaux différenciant. **À conserver et capitaliser** dans la refonte.
+
+### 6.2 Palette du site actuel
+- Bordeaux logo (peu exploité dans les pages — uniquement sur la page Contact).
+- Gris clair / blanc cassé dominant.
+- Noir pour les textes (cohérent).
+- Photos teintées chaud / froid selon les pages.
+
+### 6.3 Typographie
+- Titres : sérif fine en capitales (probablement *Trajan* / *Cinzel* — défaut Wix premium).
+- Corps : sans-sérif moderne (*Avenir* / *Inter*-like, Wix).
+- Page « Votre Avocate » : long passage en **italique sérif** (effet manuscrit / lettre).
+- Annotation manuscrite « *Cliquez ici, prenez RDV !* » sur la page Approche (script daté, à retirer).
+
+### 6.4 Imagerie
+- **Hero accueil** : photo de Metz (bâtiments classiques, type Place de la République / quartier impérial) — patrimoine, ancrage local.
+- **Page Approche** : photo type couloir / intérieur sombre + 3 pictos vectoriels blancs (calendrier, poignée de main, balance — les pictos sont propres mais le picto balance est cliché).
+- **Page Votre Avocate** : portrait professionnel cadré assis sur une chaise blanche design — qualité correcte, mais le fond très blanc / texturé est daté et la lumière est plate.
+- **Pages Compétences** : **bloc gris uni** en colonne gauche avec titre + accroche — pas d'imagerie, sobre, fonctionnel mais terne.
+
+### 6.5 Mise en page & composants
+- Header transparent superposé sur l'image hero, navigation centrée — convention Wix.
+- Headings centrés + filet horizontal court sous le titre (composant Wix répété).
+- Layout pages expertise : **2 colonnes** (bloc gris à gauche / texte à droite) — fonctionnel, sans hiérarchie typographique forte.
+- Footer : ligne sombre, peu travaillée.
+- Pas d'animation, pas de scroll lisse, pas de micro-interaction.
+
+### 6.6 Diagnostic visuel synthétique
+| Force | Faiblesse |
+|---|---|
+| Logo CS bordeaux : actif identitaire fort | Bordeaux logo non décliné sur le site |
+| Triptyque méthode clair | Picto balance + script « cliquez ici » très datés |
+| Portrait avocate disponible | Lumière plate, fond blanc texturé démodé |
+| Hero patrimonial Metz | Hero générique, hors-sujet pour cible employeur |
+| Architecture simple | Hiérarchie typo faible, pas de système de design |
+| Wix maintenable | Performance Wix médiocre, pas de blog SEO interne |
+
+---
+
+## 7. Présence digitale & écosystème
+
+| Canal | Statut | Levier refonte |
 |---|---|---|
-| Site propre | ✅ Wix probable, 5 pages | À refondre |
-| Google Business | ✅ (fiche PagesJaunes existe, GBP probable) | Avis Google = priorité SEO local |
-| LinkedIn perso | ✅ `coralie-schumpf-4311549a` | Sous-exploité |
-| Twitter/X | ✅ `@coralieschumpf` | Activité à vérifier |
-| Blog hébergé tiers | ✅ `consultation.avocat.fr` | À rapatrier sur le domaine |
-| Annuaires juridiques | ✅ Doctrine, Pappers Justice, Justifit, Allaw, MonExpertDuDroit, Lawzana, EU-Avocat, PagesDuPalais, Bottin, ReadyToParty | Bon maillage de backlinks |
-| Plateforme de RDV en ligne | ✅ Via le site + consultation.avocat.fr | À unifier |
+| Site propre | Wix, 8 pages | Refonte complète |
+| Google Business Profile | À confirmer | **Avis Google = priorité SEO local Metz** |
+| LinkedIn perso | Actif | **Canal #1 B2B à activer** (publications hebdo) |
+| Instagram | Présent | Faible ROI B2B — à maintenir minimal |
+| Facebook | Présent | Faible ROI B2B — à archiver ou maintenir minimal |
+| X / Twitter | Quasi-inactif | À archiver ou supprimer |
+| Blog tiers `consultation.avocat.fr` | Actif | **Rapatrier les contenus** sur le domaine principal |
+| Annuaires juridiques | 10+ fiches | Réorienter le wording vers employeur |
 
 ---
 
-## 7. Audit visuel & UX (préliminaire, à compléter)
+## 8. Périmètre fonctionnel pour la **refonte 100 % employeur**
 
-> ⚠️ Le contenu HTML n'a pas pu être récupéré automatiquement (Wix bloque le scraping). L'analyse ci-dessous est **déductive** (titres, structure d'indexation, plateforme présumée). Une capture d'écran ou un export PDF des principales pages est requis pour finaliser l'audit visuel.
+### 8.1 Arborescence cible proposée
 
-### Hypothèses fortes
-- **CMS** : Wix Studio (URLs en `/slug-en-majuscule-dans-le-titre`, structure plate, balisage des `<title>` typique).
-- **Identité graphique** probable : palette sobre (gris/bleu/blanc), photographie générique, typographie sans-sérif Wix par défaut.
-- **Mobile** : responsive par template Wix, mais qualité variable.
+```
+/                                  ACCUEIL — hero B2B
+/cabinet
+  /coralie-schumpf                   Biographie, formation, prises de parole
+  /methode-et-honoraires             Triptyque + grille honoraires
+/expertises
+  /droit-du-travail                  Page pilier employeur
+    /conseil-rh-quotidien              Sous-page
+    /licenciement-et-ruptures          Sous-page
+    /restructuration-et-pse            Sous-page
+    /negociation-collective-cse        Sous-page
+    /contentieux-prudhommal            Sous-page
+  /droit-penal-du-travail            Page pilier
+    /defense-du-dirigeant              Sous-page
+    /accident-grave-mise-en-danger     Sous-page
+    /travail-dissimule                 Sous-page
+    /entrave-et-relations-sociales     Sous-page
+  /securite-sociale-et-urssaf        Page pilier
+    /controle-et-redressement-urssaf   Sous-page
+    /accident-du-travail-mp            Sous-page
+    /faute-inexcusable                 Sous-page
+    /contestation-taux-incapacite      Sous-page
+/decryptages                       BLOG (rapatrié)
+/ressources                        Outils + FAQ + glossaire
+  /outils                            Calculateurs employeur
+  /faq                               Schema.org FAQPage
+  /glossaire                         CDI/CDD/CSE/AT/MP/URSSAF…
+/contact                           Cabinet, accès, RDV
+/mentions-legales · /rgpd · /cookies
+```
 
-### Risques typiques (à vérifier sur captures)
-- Photographie probable de type **stock juridique** (balance, marteau, immeuble Haussmannien) — daté.
-- **Hero générique** type bandeau d'image + slogan vague.
-- Hiérarchie typographique faible (titres et corps trop proches en taille / graisse).
-- Absence de **système de design cohérent** (composants ad hoc d'un template).
-- **Pas de personnalité visuelle distinctive** → invisible parmi les centaines d'avocats droit du travail à Metz / Grand Est.
-- **Performance Wix** : poids JS lourd, LCP > 3s probable.
-- **SEO local** correct mais **éditorialisation pauvre** (le blog est sur un domaine tiers, donc l'autorité SEO bénéficie à `consultation.avocat.fr`, pas à `schumpf-avocat.com`).
-- **Conversion** : la prise de RDV est bien présente, mais le tunnel n'est probablement pas optimisé (pas de friction analysée, pas de tracking déclaré).
+### 8.2 Personas cibles (à valider en atelier)
 
-### Points à confirmer (action utilisateur)
-- 📸 Captures d'écran de l'accueil, d'une page expertise, de la page RDV (desktop + mobile).
-- 🎨 Logo en haute définition.
-- ⚙️ Confirmation du CMS et du thème Wix utilisé.
-- 📊 Accès Google Analytics / Search Console (volumes, mots-clés, parcours).
-- 📝 Liste complète des publications du blog tiers à rapatrier.
+| Persona | Profil | Problématique type | CTA principal |
+|---|---|---|---|
+| **Marc, dirigeant TPE** | 25 salariés, sans DRH | « Comment licencier proprement mon commercial ? » | Diagnostic gratuit |
+| **Sophie, DRH PME** | 80–250 salariés | « URSSAF nous redresse de 180 k€ » | Audit URSSAF |
+| **Antoine, DAF / dirigeant** | Mis en cause pénalement | « Accident grave sur le site » | Défense urgente |
+| **Karima, juriste corporate** | Groupe, appui local Grand Est | « Besoin d'un avocat Metz pour un dossier CSE » | Mise en relation |
 
----
+### 8.3 Outils interactifs recommandés (registre employeur)
 
-## 8. Forces & faiblesses du site actuel
+- **Calculateur d'indemnité de licenciement** (côté employeur — barème Macron)
+- **Estimateur du coût d'un litige prud'hommal**
+- **Diagnostic conformité RH** (10 questions → score + livre blanc)
+- **Vérificateur de prescription URSSAF** (3 ans / 5 ans)
+- **Self-audit AT/MP** : suis-je exposé à la faute inexcusable ?
 
-### ✅ Forces
-- Domaines d'expertise **clairs et cohérents** (trois pôles complémentaires).
-- **Double cible** assumée (employeurs / salariés).
-- **Premier RDV gratuit** : argument de conversion fort.
-- **Convention d'honoraires** explicite : signal de transparence.
-- **Aide juridictionnelle** : accessibilité affichée.
-- **Présence multicanale** sur les annuaires juridiques (bon réseau de citations).
-- **Ancienneté** de la marque domaine (référencement local installé).
+### 8.4 Conversion — tunnel B2B
 
-### ⚠️ Faiblesses
-- **Identité visuelle indifférenciée** (site template).
-- **Pas de personnalisation** de la figure de Coralie Schumpf (pas de biographie riche, peu de photo, pas de prise de parole).
-- **Blog hors-domaine** : l'autorité éditoriale fuit vers `consultation.avocat.fr`.
-- **Pas d'outils interactifs** (calculateurs indemnités, simulateurs prud'hommes, FAQ structurée).
-- **Pas de versions linguistiques** (anglais / allemand — pourtant Metz frontalier).
-- **Pas de réassurance sociale** (avis Google, témoignages, presse, prises de parole).
-- **Architecture pauvre** : 5 pages, pas de granularité sur les sous-thèmes (licenciement, rupture conventionnelle, harcèlement, AT/MP — chacun pourrait être une page SEO dédiée).
-- **Conversion non instrumentée** (pas de tracking visible, pas d'A/B test possible).
+- **CTA principal** : « Réserver un diagnostic » (30 min, gratuit, sans engagement) — Calendly / Wix Bookings.
+- **CTA secondaire** : « Télécharger le livre blanc » (lead magnet par expertise).
+- **CTA tertiaire** : « Appeler le cabinet » (`tel:` cliquable, WhatsApp Business optionnel pour les dirigeants).
+- **Formulaire** : pré-qualification (entreprise, effectif, sujet, urgence).
+- **Tracking** : GA4 + Hotjar + objectifs de conversion par CTA.
 
----
+### 8.5 Réassurance B2B
+- Logos clients (avec autorisation) ou secteurs représentés (« Industrie, BTP, services aux entreprises, retail »).
+- Cas clients anonymisés (« Comment nous avons réduit un redressement URSSAF de 180 k€ à 25 k€ »).
+- Distinctions / classements (à recenser : Décideurs, Leaders League…).
+- Prises de parole presse / colloques / webinars.
+- Adhésions : *AvoSial*, *AFDT*, *Cercle Lab*, etc. (à confirmer avec Coralie).
 
-## 9. Implications pour la refonte
+### 8.6 Continuités à préserver (SEO & marque)
+- **URLs actuelles** : `/droit-du-travail`, `/droit-penal-du-travail`, `/droit-de-la-securite-sociale` → **redirections 301** vers les nouvelles URLs pilier.
+- **Logo CS bordeaux** : conservé, éventuellement nettoyé / vectorisé / décliné.
+- **Triptyque méthode** : conservé, reformulé.
+- **Triptyque valeurs** Proximité / Disponibilité / Transparence : conservé, reformulé B2B.
+- **Mot-clé** « avocat droit du travail Metz » : à conserver dans le `<title>` accueil + variantes employeur.
 
-### 9.1 Périmètre fonctionnel recommandé pour la v2
-
-**Pages institutionnelles**
-- Accueil éditorial (cf. DA proposée dans `01-benchmark-visuel.md`)
-- À propos / Maître Schumpf (biographie, formation, barreau, langues, prises de parole)
-- Méthode & honoraires (transparence renforcée — un argument différenciant)
-- Contact (cabinet, accès, plan, horaires)
-
-**Pôles d'expertise** (trois piliers conservés + sous-pages SEO)
-- Droit du travail (page pilier)
-  - Licenciement & rupture
-  - Harcèlement & discrimination
-  - Contrat de travail (rédaction / négociation)
-  - Heures supplémentaires & rémunération
-  - Prud'hommes (procédure)
-- Droit pénal du travail (page pilier)
-  - Travail dissimulé
-  - Sécurité au travail / mise en danger
-  - Entrave / délit d'entrave
-  - Défense pénale du dirigeant
-- Droit de la sécurité sociale (page pilier)
-  - Accidents du travail
-  - Maladies professionnelles
-  - Taux d'incapacité (contentieux)
-  - Faute inexcusable de l'employeur
-
-**Pour qui ?** (segmentation par persona)
-- Espace **Salariés**
-- Espace **Employeurs / Dirigeants**
-
-**Contenu**
-- **Blog rapatrié** (« Décryptages » / « Le droit du travail expliqué ») — pilier SEO + autorité éditoriale.
-- **FAQ structurée** (schema.org `FAQPage`) sur les questions récurrentes (préavis, indemnités, prescription, etc.).
-- **Glossaire** juridique (CDI, CDD, CSE, AT, MP, etc.) — excellent maillage interne.
-
-**Outils interactifs (signal de modernité fort)**
-- Simulateur d'indemnités de licenciement
-- Calculateur de préavis
-- Évaluateur d'éligibilité prud'hommes
-- Vérificateur de prescription
-
-**Conversion**
-- Page RDV unifiée (cabinet / visio / téléphone / écrit) avec calendrier en ligne.
-- Formulaire de pré-qualification (gain de temps pour le 1er RDV gratuit).
-- Numéro cliquable + WhatsApp Business optionnel.
-
-**Conformité & réassurance**
-- Mentions légales, RGPD, cookies (Wix-éconforme à reproduire).
-- Page « Avis & témoignages » avec intégration Google Reviews.
-- Charte de déontologie du Barreau de Metz mentionnée.
-
-**Internationalisation (option à valider)**
-- 🇬🇧 Anglais : transfrontaliers Luxembourg, expatriés.
-- 🇩🇪 Allemand : zone Saare / Luxembourg.
-
-### 9.2 Continuités à garder (ne pas perdre dans la refonte)
-- L'URL `/droit-du-travail` (et `/droit-penal-du-travail`, `/droit-de-la-securite-sociale`) → **redirections 301 obligatoires** vers la nouvelle structure.
-- Le mot-clé « **avocat droit du travail Metz** » sur l'accueil.
-- Le 1er RDV gratuit en hero.
-- La double cible employeurs / salariés.
-
-### 9.3 Ruptures éditoriales proposées
-- Passer d'un **site vitrine plat** à un **média-cabinet** (le blog devient un actif).
-- Passer d'une **mono-cible « avocat à Metz »** à une **double-cible explicitée** (Salariés / Employeurs) dès le hero.
-- Ajouter une **dimension pédagogique** (outils, glossaire, FAQ) — positionnement « le droit du travail rendu lisible », cohérent avec la DA proposée.
+### 8.7 Ruptures éditoriales et visuelles
+| Avant | Après |
+|---|---|
+| « Avocat aux côtés des employeurs **et des salariés** » | « L'avocate des employeurs en droit social » |
+| Hero patrimonial Metz | Hero éditorial typographique + photo contexte business (atelier, open-space, salle de réunion) |
+| « VOUS ÊTES SALARIÉ(E) » / « VOUS ÊTES EMPLOYEUR » (2 colonnes) | Une seule colonne employeur, segmentée par **persona** (Dirigeant TPE / DRH PME / Direction juridique) |
+| Aide juridictionnelle mentionnée | Forfait & abonnement RH PME |
+| « *Trop de justiciables, particuliers et petites entreprises…* » | « *La sécurité juridique de votre entreprise mérite un interlocuteur unique, disponible, et qui parle votre langue de dirigeant.* » |
+| Script « *Cliquez ici, prenez RDV !* » | Bouton sobre « Réserver un diagnostic » |
+| Picto balance générique | Iconographie sur-mesure (audit, contrat, prud'hommes, URSSAF) |
 
 ---
 
-## 10. Prochaines étapes
+## 9. Prochaines étapes
 
-1. **Validation** de cet audit avec Coralie Schumpf (corrections, ajouts, priorités business).
-2. **Captures d'écran** des pages actuelles + accès à la Search Console pour finaliser l'audit visuel et SEO.
-3. **Atelier persona** : préciser le mix client réel (% employeurs / % salariés, taille des dossiers, géographie effective).
-4. **Cartographie d'information cible** (arborescence détaillée) et plan de redirection 301.
-5. **Plan de contenu** : rapatriement blog, FAQ, glossaire, outils interactifs.
-6. **Wireframes** des 5 templates clés : home, page expertise pilier, page sous-thème, fiche avocate, RDV.
-7. **Maquettes haute fidélité** sur la base de la DA arrêtée dans `01-benchmark-visuel.md`.
+1. **Validation** de cet audit + pivot avec Coralie Schumpf (notamment la grille tarifaire, l'abonnement RH, et la liste finale des sous-pages SEO à viser).
+2. **Récupération du logo SVG HD** (codes hex exacts du bordeaux et du gris).
+3. **Export Wix Analytics + Search Console** (12 / 16 mois) pour qualifier le trafic actuel et identifier les pages à fort capital SEO à préserver.
+4. **Atelier persona** : pondération réelle des 4 personas et zones géographiques (Metz / Thionville / Sarrebruck / Nancy / Luxembourg).
+5. **Plan de contenu** : rapatriement des articles `consultation.avocat.fr`, plan éditorial blog 12 mois, FAQ schema.org.
+6. **Wireframes** v0.1 sur 5 templates clés : home, page expertise pilier, page sous-thème, fiche avocate, page diagnostic.
+7. **Maquettes HD** sur la base de la DA mise à jour dans `01-benchmark-visuel.md` (bordeaux conservé + DA B2B).
 
 ---
 
 ## Sources
 
+- Captures d'écran transmises par le client (Accueil, Approche, Votre Avocate, Compétences pilier, Droit du travail, Droit pénal du travail, Droit de la sécurité sociale, Contact) + logo HD.
 - [Schumpf Avocat — site officiel](https://www.schumpf-avocat.com/)
-- [Schumpf Avocat — Droit du travail](https://www.schumpf-avocat.com/droit-du-travail)
-- [Schumpf Avocat — Droit pénal du travail](https://www.schumpf-avocat.com/droit-penal-du-travail)
-- [Schumpf Avocat — Droit de la sécurité sociale](https://www.schumpf-avocat.com/droit-de-la-securite-sociale)
-- [Schumpf Avocat — Réserver en ligne](https://www.schumpf-avocat.com/reserver-en-ligne)
 - [Consultation.avocat.fr — fiche Coralie Schumpf](https://consultation.avocat.fr/avocat-metz/coralie-schumpf-43379.html)
-- [Consultation.avocat.fr — blog Coralie Schumpf](https://consultation.avocat.fr/blog/coralie-schumpf/consultation-telephonique.php)
 - [Doctrine — fiche avocate](https://www.doctrine.fr/p/avocat/L3F867C11D23EF1CF5D4F)
 - [Pappers Justice — fiche avocate](https://justice.pappers.fr/avocat/schumpf-coralie-57070)
 - [PagesDuPalais — fiche avocate](https://www.pagesdupalais.com/juriste-palais-avocats/barreau-avocats/coralie-schumpf-avocat-specialise-a-metz-110177)
-- [Justifit — fiche avocate](https://www.justifit.fr/avocats/avocat-metz-57070-coralie-schumpf-6380/)
-- [MonExpertDuDroit — fiche avocate](https://monexpertdudroit.com/avocat/grand-est/metz/coralie-schumpf/)
-- [Lawzana — fiche avocate](https://lawzana.com/fr/lawyer/avocat-coralie-schumpf-travail-metz-thionville)
-- [PagesJaunes](https://www.pagesjaunes.fr/pros/59928310)
-- [EU-Avocat](https://www.eu-avocat.fr/avocats/57463-metz/edfdaaaghgiefggfici.htm)
-- [Mappy — adresse cabinet](https://fr.mappy.com/poi/5e745dc354c4c008d38c04fa)
 - [LinkedIn — Coralie Schumpf](https://fr.linkedin.com/in/coralie-schumpf-4311549a)
-- [Twitter / X — @coralieschumpf](https://twitter.com/coralieschumpf?lang=fr)
-- [Allaw — prise de RDV](https://allaw.fr/avocat/coralie_schumpf_3ba)

@@ -277,7 +277,7 @@ Triptyque **PROXIMITÉ / DISPONIBILITÉ / TRANSPARENCE** — à conserver mais r
 
 ### 8.5 Réassurance B2B
 - Logos clients (avec autorisation) ou secteurs représentés (« Industrie, BTP, services aux entreprises, retail »).
-- Cas clients anonymisés (« Comment nous avons réduit un redressement URSSAF de 180 k€ à 25 k€ »).
+- Cas clients anonymisés (cf. POC : harcèlement sexuel — enquête, licenciement, défense ; accident mortel en BTP — relaxe ; licenciement économique sur perte de marché — 0 contestation).
 - Distinctions / classements (à recenser : Décideurs, Leaders League…).
 - Prises de parole presse / colloques / webinars.
 - Adhésions : *AvoSial*, *AFDT*, *Cercle Lab*, etc. (à confirmer avec Coralie).

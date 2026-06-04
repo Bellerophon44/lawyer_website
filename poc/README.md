@@ -59,7 +59,7 @@ npx serve .        # ou : python3 -m http.server 8000
 - Tonalité éditoriale du copy (cf. hero, citations, cas anonymisés) — c'est volontairement direct et premium.
 - Validation de la **Mission Annuelle** (mention dans la FAQ de la page pilier).
 - Conservation du **switch persona** Dirigeant / DRH / Direction juridique en home.
-- Décision EN/DE pour la zone frontalière.
+- ~~Décision EN/DE pour la zone frontalière~~ — abandonné (positionnement national hors transfrontalier).
 
 ## Prochaines itérations
 

@@ -51,8 +51,7 @@ Promesse :
 **Cibles confirmées (toutes B2B)** :
 - Dirigeants de **TPE / PME** (10–250 salariés) du Grand Est
 - **DRH / RRH** internes et externalisés
-- **Directions juridiques** de groupes (en appui local Metz / Thionville / Sarrebruck)
-- **Cadres dirigeants** (en défense personnelle dans les contentieux pénaux du travail)
+- **Cadres dirigeants** mis en cause à titre personnel dans des contentieux pénaux du travail
 - **Experts-comptables / cabinets de conseil RH** prescripteurs
 
 **Cibles supprimées du site refondu** :
@@ -307,7 +306,7 @@ Triptyque **PROXIMITÉ / DISPONIBILITÉ / TRANSPARENCE** — à conserver mais r
 1. **Validation** de cet audit + pivot avec Coralie Schumpf (notamment la grille tarifaire, la Mission Annuelle, et la liste finale des sous-pages SEO à viser).
 2. **Récupération du logo SVG HD** (codes hex exacts du bordeaux et du gris).
 3. **Export Wix Analytics + Search Console** (12 / 16 mois) pour qualifier le trafic actuel et identifier les pages à fort capital SEO à préserver.
-4. **Atelier persona** : pondération réelle des 4 personas et zones géographiques (Metz / Thionville / Sarrebruck / Nancy / Luxembourg).
+4. **Atelier persona** : pondération réelle des 2 personas (Dirigeant TPE/PME · DRH/RRH) et zones géographiques principales du Grand Est (Metz, Thionville, Nancy, Strasbourg, Sarreguemines).
 5. **Plan de contenu** : rapatriement des articles `consultation.avocat.fr`, plan éditorial blog 12 mois, FAQ schema.org.
 6. **Wireframes** v0.1 sur 5 templates clés : home, page expertise pilier, page sous-thème, fiche avocate, page diagnostic.
 7. **Maquettes HD** sur la base de la DA mise à jour dans `01-benchmark-visuel.md` (bordeaux conservé + DA B2B).

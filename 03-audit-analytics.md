@@ -95,9 +95,9 @@ Home (856 sessions)
 | **France** | **743** | **85 %** | Cœur de cible |
 | Pays-Bas | 39 | 4,5 % | Probablement bots — peu probable B2B Metz |
 | États-Unis | 34 | 3,9 % | Bots / VPN — à filtrer |
-| Allemagne | 10 | 1,1 % | **Vrai signal frontalier** — Sarrebruck / Karlsruhe |
+| Allemagne | 10 | 1,1 % | Hors cible commerciale (positionnement non transfrontalier) |
 | Russie | 9 | 1,0 % | Bots — à filtrer |
-| **Luxembourg** | **7** | **0,8 %** | **Vrai signal frontalier — cible B2B premium** |
+| Luxembourg | 7 | 0,8 % | Hors cible commerciale (positionnement non transfrontalier) |
 | Suède | 4 | 0,5 % | Bots |
 | Belgique | 4 | 0,5 % | Frontalier marginal |
 | Reste | <30 | <3 % | Long tail / bots |
@@ -105,7 +105,7 @@ Home (856 sessions)
 ### Lecture
 - **France = 85 %** : cohérent.
 - **~25 % du trafic non-FR est probablement du bot/spam** (Pays-Bas, USA, Russie, Suède, Singapour, Pakistan, etc.). À filtrer en GA4 (`Internal Traffic` + `Unwanted Referrals`).
-- **Allemagne + Luxembourg = 17 sessions** : c'est faible en absolu, mais **un signal qualitatif pour la zone frontalière**. Confirme l'intérêt potentiel d'une version anglaise (et/ou allemande) si Coralie veut activer les dirigeants luxembourgeois et sarrois — décision business à valider.
+- **Allemagne + Luxembourg = 17 sessions** : hors cible commerciale (le cabinet ne se positionne pas sur le transfrontalier). Pas de version EN/DE prévue. Le trafic résiduel sera à filtrer comme bruit dans GA4.
 
 ---
 

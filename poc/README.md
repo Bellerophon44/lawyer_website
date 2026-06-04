@@ -1,6 +1,14 @@
-# POC v0.1 — Cabinet Coralie Schumpf
+# POC v0.2 — Cabinet Coralie Schumpf
 
 Maquette interactive de validation : 5 templates clés, pivot 100 % employeur, DA bordeaux + ivoire + sérif éditorial.
+
+## Changements v0.2 (sur retour Coralie)
+
+- ✅ **Bordeaux primary** confirmé.
+- ✅ **Ton éditorial premium** confirmé.
+- ✅ **Portrait** : intégration de la photo actuelle (déposer le fichier dans `assets/img/coralie-schumpf.jpg` — voir `assets/img/README.md`).
+- ✅ **Suppression de la gratuité** : remplacée partout par **« Premier rendez-vous · 200 € HT (forfait) »** — positionnement B2B, filtre les sollicitations particuliers, signale le sérieux.
+- ✅ **Switch persona réduit à 2 cibles** : Dirigeant TPE/PME (cible #1) + DRH/RH (cible #2). Direction juridique supprimée.
 
 ## Ouvrir le POC
 

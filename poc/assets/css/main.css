@@ -335,7 +335,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   grid-template-columns: repeat(3, 1fr);
   gap: var(--sp-4);
 }
-@media (max-width: 800px) { .personas__grid { grid-template-columns: 1fr; } }
+.personas__grid--two { grid-template-columns: repeat(2, 1fr); max-width: 920px; }
+@media (max-width: 800px) { .personas__grid, .personas__grid--two { grid-template-columns: 1fr; } }
 .persona {
   background: var(--white);
   border-radius: var(--radius-lg);
@@ -667,36 +668,28 @@ ul { margin: 0; padding: 0; list-style: none; }
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
-  display: grid;
-  place-items: end start;
-  padding: var(--sp-6);
-  color: var(--ivory);
+  margin: 0;
 }
-.about-portrait::before {
+.about-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+.about-portrait::after {
+  /* watermark CS visible uniquement si l'image n'a pas chargé */
   content: "CS";
   position: absolute;
-  top: -8%;
-  right: -4%;
+  inset: auto -4% -10% auto;
   font-family: var(--font-serif);
-  font-size: 24vw;
+  font-size: 22vw;
   line-height: 0.8;
   color: rgba(246, 241, 233, 0.12);
   letter-spacing: -0.05em;
-}
-.about-portrait small {
-  font-size: var(--fs-xs);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  opacity: 0.75;
-  position: relative;
-}
-.about-portrait span {
-  font-family: var(--font-serif);
-  font-size: var(--fs-2xl);
-  font-style: italic;
-  position: relative;
-  display: block;
-  margin-top: var(--sp-2);
+  z-index: 0;
 }
 .about-hero__name { font-size: var(--fs-4xl); font-weight: 300; line-height: 0.95; }
 .about-hero__name em { font-style: italic; color: var(--bordeaux); }

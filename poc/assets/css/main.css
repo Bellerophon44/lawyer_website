@@ -512,6 +512,98 @@ ul { margin: 0; padding: 0; list-style: none; }
 .step__name { font-family: var(--font-serif); font-size: var(--fs-2xl); line-height: 1.1; }
 .step__desc { font-size: var(--fs-sm); color: var(--ink-soft); margin: 0; }
 
+/* ---- Offers (3 modalités) ---- */
+.offers { padding: var(--sp-9) 0; background: var(--ivory-deep); }
+.offers__head { margin-bottom: var(--sp-7); max-width: 64ch; }
+.offers__title { font-size: var(--fs-3xl); margin: var(--sp-3) 0 var(--sp-4); line-height: 1; font-weight: 300; }
+.offers__title em { font-style: italic; color: var(--bordeaux); }
+.offers__intro { font-size: var(--fs-base); color: var(--ink-soft); margin: 0; }
+.offers__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); align-items: stretch; }
+@media (max-width: 900px) { .offers__grid { grid-template-columns: 1fr; } }
+.offer {
+  background: var(--white);
+  padding: var(--sp-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(30, 30, 30, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  position: relative;
+}
+.offer--featured {
+  background: var(--ink);
+  color: var(--ivory);
+  border-color: var(--bordeaux);
+}
+.offer--featured .offer__tag { color: var(--copper); }
+.offer--featured .offer__title { color: var(--ivory); }
+.offer--featured .offer__amount { color: var(--ivory); }
+.offer--featured .offer__unit { color: var(--slate-light); }
+.offer--featured .offer__price-note { color: var(--slate-light); }
+.offer--featured .offer__desc,
+.offer--featured .offer__bullets li { color: rgba(246, 241, 233, 0.85); }
+.offer--featured .offer__bullets li::before { color: var(--copper); }
+.offer__badge {
+  position: absolute;
+  top: -12px;
+  right: var(--sp-5);
+  background: var(--copper);
+  color: var(--ink);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px var(--sp-3);
+  border-radius: 999px;
+  font-weight: 500;
+}
+.offer__tag {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bordeaux);
+  font-weight: 500;
+  margin: 0;
+}
+.offer__title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-xl);
+  line-height: 1.2;
+  margin: 0;
+}
+.offer__price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  margin: var(--sp-4) 0 0;
+  flex-wrap: wrap;
+}
+.offer__amount {
+  font-family: var(--font-serif);
+  font-size: var(--fs-3xl);
+  color: var(--bordeaux);
+  font-weight: 300;
+  line-height: 1;
+}
+.offer__unit { font-size: var(--fs-sm); color: var(--slate); }
+.offer__price-note { font-size: var(--fs-xs); color: var(--slate); margin: 0; font-style: italic; }
+.offer__desc { font-size: var(--fs-sm); color: var(--ink-soft); margin: var(--sp-3) 0 0; }
+.offer__bullets { display: grid; gap: var(--sp-2); margin: var(--sp-3) 0 0; }
+.offer__bullets li {
+  font-size: var(--fs-sm);
+  color: var(--ink-soft);
+  padding-left: var(--sp-4);
+  position: relative;
+}
+.offer__bullets li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--bordeaux);
+  font-weight: bold;
+  font-size: 1.2em;
+  line-height: 1;
+}
+
 /* ---- Posts ---- */
 .posts { background: var(--ivory-deep); padding: var(--sp-9) 0; }
 .posts__head { display: flex; justify-content: space-between; align-items: end; margin-bottom: var(--sp-7); gap: var(--sp-5); flex-wrap: wrap; }
@@ -574,6 +666,21 @@ ul { margin: 0; padding: 0; list-style: none; }
 .site-footer a:hover { color: var(--ivory); }
 .site-footer ul { display: grid; gap: var(--sp-2); }
 .site-footer__brand p { color: rgba(246, 241, 233, 0.75); max-width: 30ch; }
+.site-footer__social { display: flex; gap: var(--sp-3); margin-top: var(--sp-5); }
+.site-footer__social a {
+  width: 36px; height: 36px;
+  display: grid; place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  color: var(--ivory);
+  transition: background var(--t-fast), border-color var(--t-fast);
+}
+.site-footer__social a:hover {
+  background: var(--bordeaux);
+  border-color: var(--bordeaux);
+  color: var(--ivory);
+}
+.site-footer__social svg { width: 16px; height: 16px; }
 .site-footer__legal {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   margin-top: var(--sp-7);

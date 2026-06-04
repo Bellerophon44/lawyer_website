@@ -2,13 +2,25 @@
 
 Maquette interactive de validation : 5 templates clés, pivot 100 % employeur, DA bordeaux + ivoire + sérif éditorial.
 
-## Changements v0.2 (sur retour Coralie)
+## Changements v0.3 (sur retours Coralie cumulés)
 
+**v0.2 — retours initiaux**
 - ✅ **Bordeaux primary** confirmé.
 - ✅ **Ton éditorial premium** confirmé.
-- ✅ **Portrait** : intégration de la photo actuelle (déposer le fichier dans `assets/img/coralie-schumpf.jpg` — voir `assets/img/README.md`).
-- ✅ **Suppression de la gratuité** : remplacée partout par **« Premier rendez-vous · 200 € HT (forfait) »** — positionnement B2B, filtre les sollicitations particuliers, signale le sérieux.
-- ✅ **Switch persona réduit à 2 cibles** : Dirigeant TPE/PME (cible #1) + DRH/RH (cible #2). Direction juridique supprimée.
+- ✅ **Portrait** : intégration de la photo actuelle (déposer dans `assets/img/coralie-schumpf.jpg` — cf. `assets/img/README.md`).
+- ✅ **Premier rendez-vous payant** (au lieu de gratuit) : positionnement B2B explicite.
+- ✅ **Switch persona réduit à 2 cibles** : Dirigeant TPE/PME + DRH/RH (Direction juridique supprimée).
+- ✅ **3 cas client réels** intégrés en home (harcèlement / accident mortel BTP / licenciement éco perte de marché).
+- ✅ **Mention transfrontalière retirée** partout.
+
+**v0.3 — affinage offre et tarification**
+- ✅ **Premier rendez-vous repositionné** : 1 heure (vs. 30 min), pas de consultation écrite, à la sortie estimation de la charge de travail + proposition chiffrée d'honoraires.
+- ✅ **Mission Annuelle précisée** : volume horaire défini en amont, reconduction tacite, tarif réduit.
+- ✅ **Grille tarifaire complète** publiée en home dans une nouvelle section « Trois manières de travailler ensemble » :
+  - Mission Annuelle — **200 € HT / heure** (tarif réduit, recommandée).
+  - Mission ponctuelle — **230 € HT / heure** (tarif plein, au temps passé).
+  - Contentieux — **2 000 à 5 000 € HT** forfait + honoraires de résultat.
+- ✅ **Réseaux sociaux** intégrés dans le footer de toutes les pages (LinkedIn · Instagram · Facebook).
 
 ## Ouvrir le POC
 

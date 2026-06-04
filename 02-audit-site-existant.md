@@ -126,9 +126,10 @@ Triptyque **PROXIMITÉ / DISPONIBILITÉ / TRANSPARENCE** — à conserver mais r
 ### 4.3 Honoraires (refonte)
 - **1er RDV** : maintenir la gratuité mais le repositionner en « **Entretien de diagnostic** » (gratuit, 30 min, en cabinet ou visio) — wording B2B.
 - **Convention d'honoraires** systématique avant tout débours ✅ argument fort, à conserver.
-- **Forfait** sur opérations récurrentes (rédaction contrat, audit, mise en conformité) — à mettre en avant.
-- **Honoraires au temps passé** pour le contentieux, taux horaire affiché ou plages indicatives.
-- **Mission Annuelle** (offre validée) — abonnement annuel à volume horaire défini en amont avec le client, reconduction tacite d'une année sur l'autre, tarif préférentiel, couvre l'ensemble du **conseil juridique en droit du travail hors contentieux** (questions courantes, relecture d'actes, accompagnement des décisions RH sensibles, veille). Le contentieux fait l'objet d'une convention d'honoraires dédiée.
+- **Grille tarifaire validée (3 modalités)** :
+  - **Mission Annuelle** — `200 € HT / heure` (tarif réduit). Volume horaire défini en amont, reconduction tacite, couvre l'ensemble du **conseil juridique en droit du travail hors contentieux** (questions courantes, relecture d'actes, accompagnement des décisions RH sensibles, veille).
+  - **Mission ponctuelle** — `230 € HT / heure` (tarif plein). Au temps passé, opération circonscrite (rédaction de contrat, audit, rupture, mise en conformité, accompagnement de dossier).
+  - **Contentieux** — `2 000 à 5 000 € HT (forfait)` + **honoraires de résultat**. Calibré selon la complexité du dossier (prud'hommes, pénal du travail, URSSAF).
 - ❌ Retirer la mention « aide juridictionnelle » (non pertinente en B2B).
 
 ---

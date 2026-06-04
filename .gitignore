@@ -1,0 +1,15 @@
+# Claude Code — local per-machine settings (permissions allowlist)
+.claude/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Node (si on en arrive là plus tard)
+node_modules/
+dist/
+.cache/

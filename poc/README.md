@@ -20,7 +20,7 @@ Maquette interactive de validation : 5 templates clés, pivot 100 % employeur, D
   - Mission Annuelle — **200 € HT / heure** (tarif réduit, recommandée).
   - Mission ponctuelle — **230 € HT / heure** (tarif plein, au temps passé).
   - Contentieux — **2 000 à 5 000 € HT** forfait + honoraires de résultat.
-- ✅ **Réseaux sociaux** intégrés dans le footer de toutes les pages (LinkedIn · Instagram · Facebook).
+- ✅ **Réseaux sociaux** intégrés dans le footer de toutes les pages : **LinkedIn** + **Instagram** (`@schumpfcoralieavocat`). Facebook retiré (décision Coralie : n'apparaît plus sur le nouveau site).
 
 ## Ouvrir le POC
 

@@ -217,7 +217,7 @@ Système bi-fonte clair :
 - **Switch persona** explicite : « *Vous êtes…* Dirigeant TPE · DRH PME · Direction juridique » — chaque branche route vers un parcours et des contenus dédiés. Remplace l'ancien split Salarié / Employeur.
 - **Encarts cas client anonymisés** : « Comment nous avons ramené un redressement URSSAF de 180 k€ à 25 k€ » — typo éditoriale, chiffre saillant en bordeaux.
 - **Page avocate** type **fiche presse / About** : portrait pleine hauteur à gauche, biographie éditoriale à droite, encadré « Barreau · Formation · Langues · Adhésions », publications & prises de parole listées comme une bibliographie.
-- **Page Méthode & honoraires** dédiée et **transparente** : grille tarifaire, forfaits opérations RH récurrentes, **abonnement RH PME** (offre nouvelle à valider), exemples de conventions.
+- **Page Méthode & honoraires** dédiée et **transparente** : grille tarifaire, forfaits opérations RH récurrentes, **Mission Annuelle** (volume horaire défini en amont à tarif préférentiel, reconduction tacite, couvre tout le conseil hors contentieux), exemples de conventions.
 - **Section « Décryptages »** (blog rapatrié) en home + page d'index — c'est là que se joue la modernité éditoriale.
 - **Outils interactifs B2B** : calculateur d'indemnité de licenciement (barème Macron), estimateur de coût de litige prud'hommal, diagnostic de conformité RH (10 questions → score + livre blanc), vérificateur de prescription URSSAF.
 - **Logos secteurs clients** (« Industrie · BTP · Retail · Services ») en frise discrète.

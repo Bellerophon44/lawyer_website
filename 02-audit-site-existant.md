@@ -129,7 +129,7 @@ Triptyque **PROXIMITÉ / DISPONIBILITÉ / TRANSPARENCE** — à conserver mais r
 - **Convention d'honoraires** systématique avant tout débours ✅ argument fort, à conserver.
 - **Forfait** sur opérations récurrentes (rédaction contrat, audit, mise en conformité) — à mettre en avant.
 - **Honoraires au temps passé** pour le contentieux, taux horaire affiché ou plages indicatives.
-- **Abonnement RH** pour les PME (option à valider avec Coralie) — service récurrent type « avocate à la demande ».
+- **Mission Annuelle** (offre validée) — abonnement annuel à volume horaire défini en amont avec le client, reconduction tacite d'une année sur l'autre, tarif préférentiel, couvre l'ensemble du **conseil juridique en droit du travail hors contentieux** (questions courantes, relecture d'actes, accompagnement des décisions RH sensibles, veille). Le contentieux fait l'objet d'une convention d'honoraires dédiée.
 - ❌ Retirer la mention « aide juridictionnelle » (non pertinente en B2B).
 
 ---
@@ -295,7 +295,7 @@ Triptyque **PROXIMITÉ / DISPONIBILITÉ / TRANSPARENCE** — à conserver mais r
 | « Avocat aux côtés des employeurs **et des salariés** » | « L'avocate des employeurs en droit social » |
 | Hero patrimonial Metz | Hero éditorial typographique + photo contexte business (atelier, open-space, salle de réunion) |
 | « VOUS ÊTES SALARIÉ(E) » / « VOUS ÊTES EMPLOYEUR » (2 colonnes) | Une seule colonne employeur, segmentée par **persona** (Dirigeant TPE / DRH PME / Direction juridique) |
-| Aide juridictionnelle mentionnée | Forfait & abonnement RH PME |
+| Aide juridictionnelle mentionnée | Forfait & **Mission Annuelle** (conseil hors contentieux, volume horaire défini, tarif préférentiel, reconduction tacite) |
 | « *Trop de justiciables, particuliers et petites entreprises…* » | « *La sécurité juridique de votre entreprise mérite un interlocuteur unique, disponible, et qui parle votre langue de dirigeant.* » |
 | Script « *Cliquez ici, prenez RDV !* » | Bouton sobre « Réserver un diagnostic » |
 | Picto balance générique | Iconographie sur-mesure (audit, contrat, prud'hommes, URSSAF) |
@@ -304,7 +304,7 @@ Triptyque **PROXIMITÉ / DISPONIBILITÉ / TRANSPARENCE** — à conserver mais r
 
 ## 9. Prochaines étapes
 
-1. **Validation** de cet audit + pivot avec Coralie Schumpf (notamment la grille tarifaire, l'abonnement RH, et la liste finale des sous-pages SEO à viser).
+1. **Validation** de cet audit + pivot avec Coralie Schumpf (notamment la grille tarifaire, la Mission Annuelle, et la liste finale des sous-pages SEO à viser).
 2. **Récupération du logo SVG HD** (codes hex exacts du bordeaux et du gris).
 3. **Export Wix Analytics + Search Console** (12 / 16 mois) pour qualifier le trafic actuel et identifier les pages à fort capital SEO à préserver.
 4. **Atelier persona** : pondération réelle des 4 personas et zones géographiques (Metz / Thionville / Sarrebruck / Nancy / Luxembourg).

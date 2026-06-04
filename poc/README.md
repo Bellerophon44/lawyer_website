@@ -57,7 +57,7 @@ npx serve .        # ou : python3 -m http.server 8000
 - Confirmation de la **palette bordeaux + ivoire** (vs. variantes).
 - Choix typographique : *Fraunces* (alternatives : *Source Serif 4*, *GT Sectra*).
 - Tonalité éditoriale du copy (cf. hero, citations, cas anonymisés) — c'est volontairement direct et premium.
-- Validation de l'**abonnement RH** (mention dans la FAQ de la page pilier).
+- Validation de la **Mission Annuelle** (mention dans la FAQ de la page pilier).
 - Conservation du **switch persona** Dirigeant / DRH / Direction juridique en home.
 - Décision EN/DE pour la zone frontalière.
 
@@ -65,7 +65,7 @@ npx serve .        # ou : python3 -m http.server 8000
 
 1. Patch DA (codes hex définitifs, micro-typo) après retour Coralie.
 2. Sous-pages SEO complémentaires (URSSAF, pénal, AT/MP).
-3. Page **Méthode & honoraires** (forfaits, abonnement RH PME).
+3. Page **Méthode & honoraires** (premier rendez-vous, forfaits opérations, Mission Annuelle, contentieux au temps passé).
 4. Intégration calendrier réelle (Wix Bookings / Calendly).
 5. Instrumentation GA4 + Hotjar.
 6. Build de prod (vite/astro) si choix d'un framework, sinon optimisation des assets statiques.

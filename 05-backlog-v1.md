@@ -24,6 +24,7 @@
 
 ## Stack technique & publication
 
+- [ ] **Back-office d'édition Wix-like** (type Decap CMS) — à installer avec la v1 pour permettre à Coralie d'éditer certains textes en autonomie (champs simples, sans voir de code). **Décision actuelle (POC) : Coralie ne s'équipe pas, les modifications de texte passent par l'opérateur (« je m'en occupe »).** À ré-ouvrir le jour où l'autonomie d'édition devient nécessaire (publication d'articles, ajustements fréquents). Définir alors le périmètre éditable (textes, prix, articles) vs verrouillé (structure visuelle).
 - [ ] **Bascule de Wix vers Netlify/Vercel** (scénario B du doc `04-publication-et-editorial.md`).
 - [ ] **Plan de redirections 301** : `/votre-avocate` → `/cabinet/coralie-schumpf`, `/reserver-en-ligne` → `/premier-rendez-vous`, et toutes les URLs existantes à préserver.
 - [ ] **Sitemap.xml** à générer et soumettre à Google Search Console.

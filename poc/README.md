@@ -41,11 +41,12 @@ npx serve .        # ou : python3 -m http.server 8000
 
 | # | Fichier | Rôle |
 |---|---|---|
-| 01 | `home.html` | Accueil — hero éditorial, switch persona, 3 piliers, cas client, méthode, décryptages, CTA final |
+| 01 | `home.html` | Accueil — hero éditorial, switch persona, 3 piliers, cas client, méthode, honoraires, décryptages, CTA final |
 | 02 | `expertises/droit-du-travail.html` | Page pilier — sommaire des sous-thèmes, sections détaillées, FAQ schema-ready |
-| 03 | `expertises/licenciement-economique.html` | Page sous-thème SEO — article long format, callouts, CTA contextuel |
-| 04 | `cabinet/coralie-schumpf.html` | Fiche avocate — portrait, meta presse, biographie, publications |
-| 05 | `diagnostic.html` | RDV — formulaire de pré-qualification, 3 garanties, CTA téléphone |
+| 03 | `cabinet/coralie-schumpf.html` | Fiche avocate — portrait, meta presse, biographie, publications |
+| 04 | `diagnostic.html` | Premier rendez-vous (1 h · 200 € HT) — formulaire de pré-qualification, 3 garanties, CTA téléphone |
+
+> Note : la page sous-thème SEO « Licenciement économique » du POC initial a été retirée (décision Coralie). Le format « page article / décryptage » sera re-démontré sur un autre sujet via le pipeline éditorial (cf. `editorial/`).
 
 ## Design system (rappel)
 

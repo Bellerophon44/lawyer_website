@@ -23,7 +23,7 @@
 
 ## Angle éditorial
 - **Promesse au lecteur** : une checklist immédiatement actionnable, vue depuis la défense de l'employeur, qui couvre les 48 premières heures du contrôle.
-- **Format type** : *« Les 5 réflexes »* — structure éprouvée sur l'article licenciement économique.
+- **Format type** : *« Les 5 réflexes »* — structure listée et actionnable, callouts encadrés.
 - **Tonalité spécifique** : registre de **conseil opérationnel urgent**. Le dirigeant qui lit cet article est probablement en plein dossier — l'article doit être utilisable séance tenante.
 
 ## Plan détaillé

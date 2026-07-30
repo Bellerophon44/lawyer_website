@@ -1,0 +1,158 @@
+#!/usr/bin/env node
+/* Build de production : poc/ -> dist/
+ *
+ * Le dossier poc/ est une maquette : sa page d'accueil s'appelle home.html et
+ * son index.html est un sommaire de démo. Sur un hébergement Apache
+ * (Infomaniak), la racine doit servir index.html. Ce script produit donc une
+ * arborescence prête à uploader :
+ *
+ *   poc/home.html            -> dist/index.html
+ *   poc/index.html           -> écarté (sommaire de maquette)
+ *   poc/{assets,cabinet,expertises,diagnostic.html} -> copiés tels quels
+ *   deploy/htaccess          -> dist/.htaccess
+ *   + robots.txt et sitemap.xml générés
+ *
+ * Tous les liens internes vers home.html sont réécrits vers index.html.
+ * En fin de build, un contrôle de liens signale les cibles manquantes et les
+ * placeholders href="#" restants.
+ *
+ * Usage : node tools/build.mjs [--strict]
+ *   --strict : sortie en erreur si un lien interne est cassé (utilisé en CI).
+ */
+
+import { readFileSync, writeFileSync, rmSync, mkdirSync, cpSync, readdirSync, statSync } from 'node:fs';
+import { dirname, join, relative, resolve, posix } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const SRC = join(ROOT, 'poc');
+const OUT = join(ROOT, 'dist');
+const STRICT = process.argv.includes('--strict');
+
+/** Domaine canonique retenu dans le guide de transfert (apex, sans www). */
+const SITE_URL = 'https://schumpf-avocat.com';
+
+/** Fichiers du POC qui ne doivent pas partir en production. */
+const EXCLUDE = new Set(['index.html', 'README.md']);
+
+/** Pages publiques, dans l'ordre de priorité sitemap. */
+const PAGES = [
+  { out: 'index.html', src: 'home.html', priority: '1.0' },
+  { out: 'expertises/droit-du-travail.html', src: 'expertises/droit-du-travail.html', priority: '0.9' },
+  { out: 'expertises/droit-penal-du-travail.html', src: 'expertises/droit-penal-du-travail.html', priority: '0.9' },
+  { out: 'expertises/securite-sociale-urssaf.html', src: 'expertises/securite-sociale-urssaf.html', priority: '0.9' },
+  { out: 'cabinet/coralie-schumpf.html', src: 'cabinet/coralie-schumpf.html', priority: '0.8' },
+  { out: 'diagnostic.html', src: 'diagnostic.html', priority: '0.8' },
+];
+
+const log = (msg) => process.stdout.write(`${msg}\n`);
+
+function walk(dir, base = dir) {
+  return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) return walk(full, base);
+    return [relative(base, full)];
+  });
+}
+
+/* ---------------------------------------------------------------- 1. copie */
+
+rmSync(OUT, { recursive: true, force: true });
+mkdirSync(OUT, { recursive: true });
+
+for (const entry of readdirSync(SRC, { withFileTypes: true })) {
+  if (EXCLUDE.has(entry.name)) continue;
+  const from = join(SRC, entry.name);
+  const to = join(OUT, entry.name);
+  cpSync(from, to, { recursive: true, filter: (p) => !p.endsWith('README.md') });
+}
+
+// home.html devient la page d'accueil ; l'original ne reste pas en double.
+cpSync(join(SRC, 'home.html'), join(OUT, 'index.html'));
+rmSync(join(OUT, 'home.html'), { force: true });
+
+/* ------------------------------------------------- 2. réécriture des liens */
+
+const htmlFiles = walk(OUT).filter((f) => f.endsWith('.html'));
+let rewrites = 0;
+
+for (const file of htmlFiles) {
+  const path = join(OUT, file);
+  const before = readFileSync(path, 'utf8');
+  // Uniquement dans les attributs, pour ne pas toucher au texte rédactionnel.
+  const after = before.replace(
+    /(href|src)="([^"]*)"/g,
+    (match, attr, value) => `${attr}="${value.replace(/(^|\/)home\.html(?=$|#|\?)/, '$1index.html')}"`,
+  );
+  if (after !== before) {
+    writeFileSync(path, after);
+    rewrites += 1;
+  }
+}
+
+log(`build : ${htmlFiles.length} pages, ${rewrites} fichiers avec liens réécrits`);
+
+/* ------------------------------------------- 3. .htaccess, robots, sitemap */
+
+const htaccess = join(ROOT, 'deploy', 'htaccess');
+if (statSync(htaccess, { throwIfNoEntry: false })) {
+  cpSync(htaccess, join(OUT, '.htaccess'));
+  log('build : .htaccess ajouté');
+}
+
+writeFileSync(
+  join(OUT, 'robots.txt'),
+  ['User-agent: *', 'Allow: /', '', `Sitemap: ${SITE_URL}/sitemap.xml`, ''].join('\n'),
+);
+
+const urls = PAGES.map(({ out, priority }) => {
+  const loc = out === 'index.html' ? `${SITE_URL}/` : `${SITE_URL}/${out}`;
+  return `  <url>\n    <loc>${loc}</loc>\n    <priority>${priority}</priority>\n  </url>`;
+}).join('\n');
+
+writeFileSync(
+  join(OUT, 'sitemap.xml'),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
+);
+log('build : robots.txt et sitemap.xml générés');
+
+/* -------------------------------------------------- 4. contrôle des liens */
+
+const built = new Set(walk(OUT));
+const broken = [];
+const placeholders = [];
+
+for (const file of htmlFiles) {
+  const html = readFileSync(join(OUT, file), 'utf8');
+  for (const [, , value] of html.matchAll(/(href|src)="([^"]*)"/g)) {
+    if (value === '#') {
+      placeholders.push(file);
+      continue;
+    }
+    if (/^(https?:|mailto:|tel:|#|data:|\/\/)/.test(value)) continue;
+    const target = value.split(/[#?]/)[0];
+    if (!target) continue;
+    const resolved = posix.normalize(posix.join(posix.dirname(file), target));
+    if (!built.has(resolved)) broken.push(`${file} -> ${value}`);
+  }
+}
+
+if (broken.length) {
+  log(`\nLiens internes cassés (${broken.length}) :`);
+  for (const b of broken) log(`  ✗ ${b}`);
+} else {
+  log('contrôle : aucun lien interne cassé');
+}
+
+const placeholderCount = placeholders.length;
+if (placeholderCount) {
+  const byFile = placeholders.reduce((acc, f) => ({ ...acc, [f]: (acc[f] ?? 0) + 1 }), {});
+  log(`\nPlaceholders href="#" restants (${placeholderCount}) — pages à écrire :`);
+  for (const [file, count] of Object.entries(byFile)) log(`  · ${file} : ${count}`);
+}
+
+log(`\ndist/ prêt : ${built.size} fichiers`);
+
+if (STRICT && broken.length) {
+  process.exitCode = 1;
+}

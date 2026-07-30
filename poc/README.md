@@ -37,6 +37,12 @@ npx serve .        # ou : python3 -m http.server 8000
 
 **Via GitHub Pages** (si tu veux le partager à Coralie sans rien installer côté client) : active GitHub Pages sur la branche `claude/wizardly-johnson-OwjOM`, dossier `/poc`. URL : `https://bellerophon44.github.io/lawyer_website/`.
 
+## Mise en production
+
+Ce dossier n'est **pas** uploadé tel quel : sa page d'accueil s'appelle `home.html`, ce qui n'est pas ce qu'Apache sert par défaut. La production se génère avec `node tools/build.mjs`, qui produit `dist/` (renommage en `index.html`, réécriture des liens internes, `.htaccess`, `robots.txt`, `sitemap.xml`, contrôle des liens).
+
+Procédure complète — DNS, SSL, déploiement FTPS, rollback : **[`docs/hebergement-infomaniak.md`](../docs/hebergement-infomaniak.md)**.
+
 ## Les 5 templates
 
 | # | Fichier | Rôle |

@@ -1,0 +1,37 @@
+# Déployé en tant que /sites/schumpf-avocat.com/.htaccess par tools/build.mjs
+#
+# ATTENTION : la redirection HTTPS ci-dessous ne doit être active qu'une fois
+# le certificat SSL installé sur schumpf-avocat.com ET www.schumpf-avocat.com
+# dans le Manager Infomaniak. Activée trop tôt, elle rend le site inaccessible
+# alors que les fichiers sont corrects (cf. guide de transfert, § 6 et § 7).
+
+RewriteEngine On
+
+# Canonique : https://schumpf-avocat.com (apex, sans www)
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.schumpf-avocat\.com$ [NC]
+RewriteRule ^ https://schumpf-avocat.com%{REQUEST_URI} [L,R=301]
+
+# Page d'accueil
+DirectoryIndex index.html
+
+# Cache long sur les assets versionnés, court sur le HTML
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain application/javascript application/xml image/svg+xml
+</IfModule>
+
+# Ne pas exposer les fichiers de travail
+<FilesMatch "\.(md|mjs|yml|yaml)$">
+  Require all denied
+</FilesMatch>

@@ -164,14 +164,21 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 .nav { display: flex; align-items: center; gap: var(--sp-6); }
-.nav a {
+
+/* Le :not(.btn) est indispensable. Sans lui, .nav a (0,1,1) l'emporte sur
+   .btn--primary (0,1,0) et repeint le CTA du header en gris foncé sur fond
+   bordeaux — illisible. Au survol et sur la page active, .nav a le passait
+   même en bordeaux sur bordeaux, donc invisible. Un bouton placé dans la
+   navigation doit rester un bouton : couleur, soulignement et état actif
+   sont ici réservés aux liens de menu. */
+.nav a:not(.btn) {
   font-size: var(--fs-sm);
   color: var(--ink-soft);
   position: relative;
   padding: var(--sp-2) 0;
   transition: color var(--t-fast);
 }
-.nav a::after {
+.nav a:not(.btn)::after {
   content: "";
   position: absolute;
   left: 0; bottom: 0;
@@ -180,10 +187,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   background: var(--bordeaux);
   transition: width var(--t-med);
 }
-.nav a:hover { color: var(--bordeaux); }
-.nav a:hover::after { width: 100%; }
-.nav a.is-active { color: var(--bordeaux); }
-.nav a.is-active::after { width: 100%; }
+.nav a:not(.btn):hover { color: var(--bordeaux); }
+.nav a:not(.btn):hover::after { width: 100%; }
+.nav a:not(.btn).is-active { color: var(--bordeaux); }
+.nav a:not(.btn).is-active::after { width: 100%; }
 @media (max-width: 860px) { .nav { display: none; } }
 
 /* ---- Buttons ---- */

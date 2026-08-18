@@ -46,13 +46,24 @@ echo "Déploiement de dist/ vers ${FTP_HOST}:${FTP_DIR}"
 [[ "${DELETE:-0}" == "1" ]] && echo "  (mode --delete actif)"
 [[ "${DRY_RUN:-0}" == "1" ]] && echo "  (simulation, aucune écriture)"
 
+# lftp découpe lui-même la chaîne qu'on lui passe : les valeurs doivent être
+# citées pour son parseur, pas seulement pour bash. Le guillemet simple ne suffit
+# pas — un mot de passe contenant une apostrophe fait échouer la connexion sans
+# message clair. Le guillemet double protège tout, à condition d'échapper les
+# antislashs et les guillemets. Vérifié sur des mots de passe contenant
+# apostrophe, guillemet, antislash, espace, virgule et dollar.
+lftp_quote() {
+  local s=${1//\\/\\\\}
+  printf '"%s"' "${s//\"/\\\"}"
+}
+
 lftp -c "
 set ftp:ssl-force true
 set ftp:ssl-protect-data true
 set net:max-retries 3
 set net:timeout 20
-open -u '${FTP_USER}','${FTP_PASS}' '${FTP_HOST}'
-mirror ${MIRROR_FLAGS[*]} dist/ '${FTP_DIR}'
+open -u $(lftp_quote "$FTP_USER"),$(lftp_quote "$FTP_PASS") $(lftp_quote "$FTP_HOST")
+mirror ${MIRROR_FLAGS[*]} dist/ $(lftp_quote "$FTP_DIR")
 bye
 "
 

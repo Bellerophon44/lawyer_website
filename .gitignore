@@ -11,5 +11,11 @@ Thumbs.db
 
 # Node (si on en arrive là plus tard)
 node_modules/
-dist/
 .cache/
+
+# Build de production (regenere par tools/build.mjs)
+dist/
+
+# Identifiants de deploiement — ne jamais committer
+.env
+deploy/.env

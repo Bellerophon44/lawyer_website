@@ -1,0 +1,73 @@
+name: Build & préversion
+
+# Tourne à chaque push. N'écrit JAMAIS sur le serveur de production : la mise
+# en ligne du site public est un geste manuel, dans le workflow
+# « Déploiement Infomaniak ».
+
+on:
+  push:
+    paths:
+      - 'poc/**'
+      - 'deploy/**'
+      - 'tools/**'
+      - '.github/workflows/ci.yml'
+
+jobs:
+  build:
+    name: Build et contrôle des liens
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Build dist/
+        run: node tools/build.mjs --strict
+
+      - name: Archiver dist/
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 14
+
+  preview:
+    name: Préversion GitHub Pages
+    needs: build
+    # Uniquement depuis la branche par défaut : le lien envoyé en relecture doit
+    # refléter l'état de référence, pas une branche de travail en cours.
+    if: github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # --preview pose un noindex sur chaque page et retire le sitemap : la
+      # préversion ne doit jamais concurrencer le site public dans les
+      # résultats de recherche.
+      - name: Build dist/ en mode préversion
+        run: node tools/build.mjs --preview --strict
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

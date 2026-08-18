@@ -226,6 +226,34 @@ Rollback d'urgence sans outil : dans le Web FTP, renommer `index.html` en
 DNS** si le problème vient du fichier HTML — les DNS ne se reconfigurent que si
 l'hébergement Infomaniak lui-même est inutilisable.
 
+### 4.6 Faire relire avant de publier
+
+Chaque push sur la branche par défaut publie une **préversion** sur GitHub
+Pages : `https://bellerophon44.github.io/lawyer_website/`. C'est le lien à
+envoyer à Coralie pour valider une modification avant qu'elle soit publique.
+Rien à installer de son côté.
+
+La préversion est construite par `node tools/build.mjs --preview`, à partir des
+mêmes sources que la production. Le rendu est donc identique — c'est bien ce
+qui sera publié qui est relu.
+
+**Ce qu'elle ne teste pas.** GitHub Pages n'est pas Apache : le `.htaccess` y
+serait inerte, donc il n'y est pas déposé. Redirection `www` → apex, forçage
+HTTPS, règles 404 sur `/backup/` et `index_old*`, compression, en-têtes de
+cache : rien de tout cela n'est exercé par la préversion. Ce sont précisément
+les réglages les plus susceptibles de casser une mise en ligne, et ils ne se
+vérifient qu'après déploiement, avec les `curl` du § 4.4.
+
+**Pourquoi le `robots.txt` de la préversion autorise le crawl.** C'est
+contre-intuitif mais délibéré. Un `Disallow: /` empêcherait Google de lire les
+pages — donc de voir la balise `noindex` qu'elles portent — et il pourrait
+malgré tout faire figurer les URL nues dans ses résultats, sans pouvoir les en
+retirer. En laissant crawler, le `noindex` est lu et la préversion reste hors
+de l'index. Ne pas « durcir » ce fichier en le passant en `Disallow`.
+
+Aucune balise `canonical` n'est ajoutée non plus : Google demande de ne pas
+combiner `noindex` et `canonical`, les deux signaux étant contradictoires.
+
 ---
 
 ## 5. À traiter avant de considérer le site fini

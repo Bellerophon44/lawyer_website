@@ -134,31 +134,47 @@ restants. Un build qui signale un lien cassé ne doit pas être déployé.
 
 Deux voies, même script (`deploy/upload.sh`), donc même comportement.
 
-**Depuis GitHub (recommandé)** — Actions > *Build & déploiement Infomaniak* >
+**Depuis GitHub (recommandé)** — Actions > *Déploiement Infomaniak* >
 *Run workflow*. Laisser `dry_run` coché une première fois pour voir la liste des
 transferts, puis relancer décoché.
 
-Deux prérequis, une seule fois.
+#### Deux workflows, deux rôles
 
-D'abord, **le workflow doit se trouver sur la branche par défaut du dépôt**
-(`claude/wizardly-johnson-OwjOM`) : GitHub n'affiche le bouton *Run workflow*
-que pour les workflows présents sur cette branche. Tant que
-`.github/workflows/deploy.yml` n'y est pas fusionné, le déclenchement manuel
-est indisponible — seul le job de build tourne, sur chaque push.
+Le dépôt en compte exactement deux, et la distinction est volontaire :
 
-Ensuite, dans Settings > Secrets and variables > Actions :
+| Workflow | Déclenchement | Ce qu'il fait | Touche au site public |
+|---|---|---|---|
+| **Build & préversion** (`ci.yml`) | chaque push | build, contrôle des liens, publication de la préversion | **non, jamais** |
+| **Déploiement Infomaniak** (`deploy-infomaniak.yml`) | manuel uniquement | build puis envoi FTPS | **oui** |
+
+Ils étaient réunis à l'origine dans un seul fichier nommé « Build & déploiement
+Infomaniak ». Le nom laissait croire qu'une fusion déclenchait une mise en
+ligne, alors que le job d'envoi y était systématiquement sauté. Séparés, la
+règle se lit dans la liste des Actions : **voir « Déploiement Infomaniak »
+apparaître signifie toujours qu'un déploiement a réellement eu lieu.**
+
+Aucun push, aucune fusion ne met le site public à jour. Jamais.
+
+#### Prérequis, une seule fois
+
+**Le workflow de déploiement doit se trouver sur la branche par défaut du
+dépôt** (`claude/wizardly-johnson-OwjOM`) : GitHub n'affiche le bouton
+*Run workflow* que pour les workflows présents sur cette branche. Tant que
+`.github/workflows/deploy-infomaniak.yml` n'y est pas fusionné, le
+déclenchement manuel est indisponible.
+
+Puis, dans Settings > Secrets and variables > Actions, sur l'environnement
+`production` (et non au niveau du dépôt : seul le job de déploiement déclare
+cet environnement, le job de build n'a donc pas accès aux identifiants) :
 
 | Secret | Où le trouver |
 |---|---|
 | `FTP_HOST` | Manager Infomaniak > Hébergement Web > FTP / SSH |
-| `FTP_USER` | idem |
+| `FTP_USER` | idem, **préfixe compris** (`wm06cn_…`) |
 | `FTP_PASS` | idem (créer un utilisateur FTP dédié au déploiement) |
 
-Variable optionnelle `FTP_DIR` si le dossier cible diffère de
-`/sites/schumpf-avocat.com`.
-
-Chaque push lance le build et le contrôle des liens, mais **jamais** le
-déploiement : la mise en ligne reste un geste manuel.
+Variable `FTP_DIR` : `/` si l'utilisateur FTP est cloisonné sur le dossier du
+site — c'est le cas ici. Sans cloisonnement, `/sites/schumpf-avocat.com`.
 
 **Depuis un poste local** (si les identifiants ne doivent pas passer par
 GitHub) :

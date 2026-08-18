@@ -33,6 +33,20 @@ RedirectMatch 404 /\.git
 # --- Page d'accueil -------------------------------------------------------
 DirectoryIndex index.html
 
+# --- Ne pas servir les sauvegardes laissées dans la racine du site --------
+# Relevé le 18/08/2026 : https://schumpf-avocat.com/backup/ répondait 200, et
+# ce dossier contenait une ancienne fiche avocate complète — page fantôme
+# publiquement accessible et indexable, avec des liens morts.
+#
+# Ces fichiers doivent rester sur le serveur : index_old.html est le rollback
+# décrit par le guide de transfert. Ils ne doivent simplement pas être servis.
+# Un 404 est préférable à un 403, qui confirmerait leur existence.
+#
+# Ceci est une ceinture de sécurité, pas la solution : une sauvegarde n'a rien
+# à faire dans la racine web. Cf. docs/hebergement-infomaniak.md.
+RedirectMatch 404 ^/backup(/|$)
+RedirectMatch 404 ^/index[-_](old|backup|new_pause|wix)
+
 # --- Adresse canonique : https://schumpf-avocat.com (apex, sans www) ------
 RewriteEngine On
 RewriteCond %{HTTPS} !=on [OR]

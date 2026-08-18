@@ -184,6 +184,24 @@ pas le dossier `dist` lui-même, sinon le site se retrouve sur
 serveur survivent aux déploiements. Le nettoyage des fichiers orphelins se
 demande explicitement avec `DELETE=1`.
 
+**Où ranger une sauvegarde.** `/sites/schumpf-avocat.com` est la racine web :
+tout ce qui s'y trouve est servi publiquement, y compris un dossier nommé
+`backup`. Le 18/08/2026, `https://schumpf-avocat.com/backup/` répondait `200`
+et donnait accès à une ancienne fiche avocate — page fantôme indexable, aux
+liens morts.
+
+Les sauvegardes ont leur place **hors de la racine web**, dans le `backups/`
+qui existe déjà à la racine du compte :
+
+```bash
+mv ~/sites/schumpf-avocat.com/backup ~/backups/site-2026-07-03
+```
+
+`deploy/htaccess` renvoie par ailleurs un 404 sur `/backup/` et sur les
+`index_old*` / `index_backup*`, en ceinture de sécurité. Un 404 plutôt qu'un
+403, qui confirmerait leur existence. Ces fichiers restent sur le disque et
+restent utilisables pour un rollback : ils ne sont simplement plus servis.
+
 ### 4.4 Vérifier après déploiement
 
 - Ouvrir `https://schumpf-avocat.com` **en navigation privée** (le cache

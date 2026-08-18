@@ -138,7 +138,15 @@ Deux voies, même script (`deploy/upload.sh`), donc même comportement.
 *Run workflow*. Laisser `dry_run` coché une première fois pour voir la liste des
 transferts, puis relancer décoché.
 
-Prérequis, une seule fois, dans Settings > Secrets and variables > Actions :
+Deux prérequis, une seule fois.
+
+D'abord, **le workflow doit se trouver sur la branche par défaut du dépôt**
+(`claude/wizardly-johnson-OwjOM`) : GitHub n'affiche le bouton *Run workflow*
+que pour les workflows présents sur cette branche. Tant que
+`.github/workflows/deploy.yml` n'y est pas fusionné, le déclenchement manuel
+est indisponible — seul le job de build tourne, sur chaque push.
+
+Ensuite, dans Settings > Secrets and variables > Actions :
 
 | Secret | Où le trouver |
 |---|---|

@@ -1,21 +1,45 @@
 # Déployé en tant que /sites/schumpf-avocat.com/.htaccess par tools/build.mjs
 #
-# ATTENTION : la redirection HTTPS ci-dessous ne doit être active qu'une fois
-# le certificat SSL installé sur schumpf-avocat.com ET www.schumpf-avocat.com
-# dans le Manager Infomaniak. Activée trop tôt, elle rend le site inaccessible
-# alors que les fichiers sont corrects (cf. guide de transfert, § 6 et § 7).
+# Ce fichier ÉCRASE celui du serveur à chaque déploiement. Toute règle ajoutée
+# à la main côté Infomaniak doit donc être reportée ici, sinon elle est perdue
+# au déploiement suivant.
+#
+# Les deux premières sections proviennent du .htaccess généré par Infomaniak,
+# relevé sur le serveur avant la première mise en production. Elles sont
+# conservées telles quelles.
+#
+# SSL — état vérifié le 18/08/2026 depuis le serveur :
+#   curl -I https://schumpf-avocat.com      ->  HTTP/2 200
+#   curl -I https://www.schumpf-avocat.com  ->  HTTP/2 200
+# Aucune erreur de certificat sur l'une ni l'autre variante, et le serveur
+# renvoie deja strict-transport-security (HSTS actif). Le prerequis pose par le
+# guide de transfert (SSL valide sur les deux variantes avant d'activer la
+# redirection) est donc satisfait : les regles ci-dessous peuvent etre
+# deployees telles quelles.
+#
+# A savoir si le certificat devait un jour ne plus couvrir www : aucune regle
+# Apache ne pourrait le rattraper, la poignee de main TLS precedant la lecture
+# de ce fichier. Cela releverait du certificat dans le Manager.
 
+# --- Compression (configuration Infomaniak d'origine) ---------------------
+SetOutputFilter DEFLATE
+AddOutputFilterByType DEFLATE "application/atom+xml" "application/javascript" "application/json" "application/ld+json" "application/manifest+json" "application/rdf+xml" "application/rss+xml" "application/schema+json" "application/vnd.geo+json" "application/vnd.ms-fontobject" "application/x-font-ttf" "application/x-javascript" "application/x-web-app-manifest+json" "application/xhtml+xml" "application/xml" "font/eot" "font/opentype" "image/bmp" "image/svg+xml" "image/vnd.microsoft.icon" "image/x-icon" "text/cache-manifest" "text/css" "text/html" "text/javascript" "text/plain" "text/vcard" "text/vnd.rim.location.xloc" "text/vtt" "text/x-component" "text/x-cross-domain-policy" "text/xml"
+
+# --- Protection des dossiers de versionnement (origine Infomaniak) --------
+# SECTION BEGIN GIT PROTECTION
+RedirectMatch 404 /\.git
+# SECTION END GIT PROTECTION
+
+# --- Page d'accueil -------------------------------------------------------
+DirectoryIndex index.html
+
+# --- Adresse canonique : https://schumpf-avocat.com (apex, sans www) ------
 RewriteEngine On
-
-# Canonique : https://schumpf-avocat.com (apex, sans www)
 RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} ^www\.schumpf-avocat\.com$ [NC]
 RewriteRule ^ https://schumpf-avocat.com%{REQUEST_URI} [L,R=301]
 
-# Page d'accueil
-DirectoryIndex index.html
-
-# Cache long sur les assets versionnés, court sur le HTML
+# --- Cache : long sur les assets, nul sur le HTML -------------------------
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/css "access plus 7 days"
@@ -26,12 +50,7 @@ DirectoryIndex index.html
   ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
 
-# Compression
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css text/plain application/javascript application/xml image/svg+xml
-</IfModule>
-
-# Ne pas exposer les fichiers de travail
+# --- Ne pas exposer les fichiers de travail -------------------------------
 <FilesMatch "\.(md|mjs|yml|yaml)$">
   Require all denied
 </FilesMatch>

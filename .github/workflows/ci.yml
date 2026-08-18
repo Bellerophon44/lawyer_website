@@ -11,6 +11,11 @@ on:
       - 'deploy/**'
       - 'tools/**'
       - '.github/workflows/ci.yml'
+  # Permet de publier la préversion depuis une branche de travail, pour faire
+  # relire une modification AVANT de la fusionner. Le site Pages étant unique,
+  # une préversion de branche remplace celle en place jusqu'au prochain push
+  # sur la branche par défaut.
+  workflow_dispatch:
 
 jobs:
   build:
@@ -36,9 +41,11 @@ jobs:
   preview:
     name: Préversion GitHub Pages
     needs: build
-    # Uniquement depuis la branche par défaut : le lien envoyé en relecture doit
-    # refléter l'état de référence, pas une branche de travail en cours.
-    if: github.ref_name == github.event.repository.default_branch
+    # Sur push : uniquement depuis la branche par défaut, pour qu'une branche
+    # de travail ne remplace pas la préversion de référence à chaque commit.
+    # Sur déclenchement manuel : depuis n'importe quelle branche, choisie
+    # explicitement — c'est ce qui permet de faire valider avant de fusionner.
+    if: github.event_name == 'workflow_dispatch' || github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
     permissions:
       contents: read

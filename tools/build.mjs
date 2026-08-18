@@ -29,6 +29,7 @@
 import { readFileSync, writeFileSync, rmSync, mkdirSync, cpSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join, relative, resolve, posix } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execSync } from 'node:child_process';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = join(ROOT, 'poc');
@@ -59,15 +60,31 @@ const SITE_URL = 'https://schumpf-avocat.com';
 /** Fichiers du POC qui ne doivent pas partir en production. */
 const EXCLUDE = new Set(['index.html', 'README.md']);
 
-/** Pages publiques, dans l'ordre de priorité sitemap. */
-const PAGES = [
-  { out: 'index.html', src: 'home.html', priority: '1.0' },
-  { out: 'expertises/droit-du-travail.html', src: 'expertises/droit-du-travail.html', priority: '0.9' },
-  { out: 'expertises/droit-penal-du-travail.html', src: 'expertises/droit-penal-du-travail.html', priority: '0.9' },
-  { out: 'expertises/securite-sociale-urssaf.html', src: 'expertises/securite-sociale-urssaf.html', priority: '0.9' },
-  { out: 'cabinet/coralie-schumpf.html', src: 'cabinet/coralie-schumpf.html', priority: '0.8' },
-  { out: 'diagnostic.html', src: 'diagnostic.html', priority: '0.8' },
+/**
+ * Priorité sitemap, par motif de chemin, premier motif gagnant.
+ *
+ * La liste des pages n'est volontairement PAS écrite en dur : elle est
+ * déduite des fichiers réellement construits. Une page ajoutée dans poc/
+ * entre donc seule dans le sitemap, sans modification de ce script — ce qui
+ * permet d'ajouter une page (mentions légales, RGPD…) sans toucher au code.
+ */
+const PRIORITIES = [
+  [/^index\.html$/, '1.0'],
+  [/^expertises\//, '0.9'],
+  [/^cabinet\//, '0.8'],
+  [/^diagnostic\.html$/, '0.8'],
+  [/./, '0.7'],
 ];
+
+/** Commit construit, pour savoir depuis le site ce qui est réellement en ligne. */
+function commitSha() {
+  if (process.env.GITHUB_SHA) return process.env.GITHUB_SHA;
+  try {
+    return execSync('git rev-parse HEAD', { cwd: ROOT, encoding: 'utf8' }).trim();
+  } catch {
+    return 'inconnu';
+  }
+}
 
 const log = (msg) => process.stdout.write(`${msg}\n`);
 
@@ -162,17 +179,29 @@ if (PREVIEW) {
     ['User-agent: *', 'Allow: /', '', `Sitemap: ${SITE_URL}/sitemap.xml`, ''].join('\n'),
   );
 
-  const urls = PAGES.map(({ out, priority }) => {
-    const loc = out === 'index.html' ? `${SITE_URL}/` : `${SITE_URL}/${out}`;
-    return `  <url>\n    <loc>${loc}</loc>\n    <priority>${priority}</priority>\n  </url>`;
-  }).join('\n');
+  const pages = htmlFiles
+    .map((out) => ({ out, priority: PRIORITIES.find(([motif]) => motif.test(out))[1] }))
+    .sort((a, b) => b.priority.localeCompare(a.priority) || a.out.localeCompare(b.out));
+
+  const urls = pages
+    .map(({ out, priority }) => {
+      const loc = out === 'index.html' ? `${SITE_URL}/` : `${SITE_URL}/${out}`;
+      return `  <url>\n    <loc>${loc}</loc>\n    <priority>${priority}</priority>\n  </url>`;
+    })
+    .join('\n');
 
   writeFileSync(
     join(OUT, 'sitemap.xml'),
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
   );
-  log('build : robots.txt et sitemap.xml générés');
+  log(`build : robots.txt et sitemap.xml générés (${pages.length} pages)`);
 }
+
+// Permet de savoir depuis l'extérieur ce qui est réellement en ligne :
+//   curl https://schumpf-avocat.com/version.txt
+// Corollaire : dist/ change à chaque commit, même sans modification de
+// contenu. Pour comparer deux builds, exclure ce fichier.
+writeFileSync(join(OUT, 'version.txt'), `${commitSha()}\n`);
 
 /* -------------------------------------------------- 4. contrôle des liens */
 

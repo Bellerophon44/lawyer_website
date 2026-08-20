@@ -315,6 +315,21 @@ passer par le site : `curl --url smtps://mail.infomaniak.com:465 --user ...`
 (voir l'historique de la mise en place). Pour révoquer l'accès du site :
 supprimer l'appareil dans le Manager et en générer un nouveau.
 
+### 4.8 Balisage SEO et redirections (pack du 20/08/2026)
+
+- **Redirections 301** des anciennes URL Wix (`/reserver-en-ligne`,
+  `/droit-du-travail`, `/droit-penal-du-travail`,
+  `/droit-de-la-securite-sociale`) dans `deploy/htaccess` — elles étaient en
+  404 alors que Google les indexe encore.
+- **Canonical, Open Graph et JSON-LD** (`LegalService`, `Person`, `FAQPage`)
+  injectés par le build en production uniquement — jamais en préversion, qui
+  est noindex. Tout est dérivé du contenu des pages : une FAQ modifiée par
+  Coralie met à jour le balisage toute seule au build suivant.
+- **Image de partage** `assets/img/og-cover.jpg` (1200×630), **favicons**
+  (SVG + `favicon.ico` racine + icône Apple), **page 404** dans la charte
+  (`poc/404.html`, styles inline et liens absolus car servie à n'importe
+  quelle profondeur), **en-têtes de sécurité** de base dans le `.htaccess`.
+
 ---
 
 ## 5. À traiter avant de considérer le site fini
@@ -330,13 +345,7 @@ Par ordre de priorité.
 2. **Polices Google externes.** Les six pages chargent Fraunces et Inter depuis
    `fonts.googleapis.com`. À auto-héberger dans `assets/fonts/` : performance,
    et un transfert d'IP vers Google en moins à déclarer côté RGPD.
-3. **Balises `canonical` et Open Graph** absentes de toutes les pages. Utile
-   maintenant que l'adresse canonique est arrêtée sur l'apex.
-4. **Redirections depuis les anciennes URL Wix.** Les URL de l'ancien site
-   indexées par Google renvoient une 404. Les identifier via
-   `data/analytics/wix-traffic-pages-full-12m.csv` et ajouter les `Redirect 301`
-   correspondants dans `deploy/htaccess`.
-5. **Analytics.** L'instrumentation est simulée (`console.log` sur
+3. **Analytics.** L'instrumentation est simulée (`console.log` sur
    `data-track`). À remplacer par GA4 ou une alternative sans cookie
    (Plausible, Matomo), ce qui simplifie la bannière cookies.
 

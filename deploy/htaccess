@@ -50,11 +50,32 @@ RedirectMatch 404 ^/index[-_](old|backup|new_pause|wix)
 # Identifiants SMTP du formulaire (config/rdv.secrets.php) : jamais servis.
 RedirectMatch 404 ^/config(/|$)
 
-# --- Adresse canonique : https://schumpf-avocat.com (apex, sans www) ------
+# --- Anciennes URL Wix, encore indexées par Google ------------------------
+# Chiffres des 12 derniers mois Wix (data/analytics/) : /reserver-en-ligne
+# était la 2e page la plus visitée (115 vues). Sans ces redirections, chaque
+# clic depuis un ancien résultat Google tombe en 404.
+# Placées AVANT la règle canonique : un seul saut, directement vers l'URL
+# https finale.
 RewriteEngine On
+RewriteRule ^reserver-en-ligne/?$ https://schumpf-avocat.com/diagnostic.html [L,R=301]
+RewriteRule ^droit-du-travail/?$ https://schumpf-avocat.com/expertises/droit-du-travail.html [L,R=301]
+RewriteRule ^droit-penal-du-travail/?$ https://schumpf-avocat.com/expertises/droit-penal-du-travail.html [L,R=301]
+RewriteRule ^droit-de-la-securite-sociale/?$ https://schumpf-avocat.com/expertises/securite-sociale-urssaf.html [L,R=301]
+
+# --- Adresse canonique : https://schumpf-avocat.com (apex, sans www) ------
 RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} ^www\.schumpf-avocat\.com$ [NC]
 RewriteRule ^ https://schumpf-avocat.com%{REQUEST_URI} [L,R=301]
+
+# --- Page 404 dans la charte du site --------------------------------------
+ErrorDocument 404 /404.html
+
+# --- En-têtes de sécurité, sans risque pour un site statique --------------
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
 
 # --- Cache : long sur les assets, nul sur le HTML -------------------------
 <IfModule mod_expires.c>

@@ -27,7 +27,8 @@ fusionné après lui est en attente de déploiement.
 
 | Modification | Demandé par | PR | Statut |
 |---|---|---|---|
-| Formulaire de rendez-vous branché : envoi par e-mail via PHP sur Infomaniak, page de confirmation, anti-spam. Le message « POC » disparaît. | Mathieu | #9 | validé — **test d'envoi réel à faire après déploiement** (cf. § 5 de la doc) |
+| Correctif du formulaire : envoi par SMTP authentifié — `mail()` n'existe pas chez Infomaniak, constaté au test réel. Identifiants hors dépôt, dans `config/` sur le serveur. | Mathieu | #10 | validé — **config serveur + test réel à faire** (cf. § 5 de la doc) |
+| Formulaire de rendez-vous branché : envoi par e-mail via PHP sur Infomaniak, page de confirmation, anti-spam. Le message « POC » disparaît. | Mathieu | #9 | **déployé** — a révélé l'absence de `mail()`, corrigé par #10 |
 
 ## 2026-08-18
 

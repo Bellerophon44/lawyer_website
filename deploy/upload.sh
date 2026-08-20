@@ -34,8 +34,10 @@ fi
 
 MIRROR_FLAGS=(--reverse --verbose --parallel=4)
 
-# Ne jamais écraser ni supprimer les sauvegardes et l'état FTP côté serveur.
-for pattern in 'index_old*' 'index_backup*' 'index-wix*' '.well-known/'; do
+# Ne jamais écraser ni supprimer : les sauvegardes, l'état Let's Encrypt, et
+# le fichier d'identifiants SMTP du formulaire (config/), créé à la main sur
+# le serveur et absent du dépôt.
+for pattern in 'index_old*' 'index_backup*' 'index-wix*' '.well-known/' 'config/'; do
   MIRROR_FLAGS+=("--exclude-glob=$pattern")
 done
 

@@ -276,12 +276,21 @@ combiner `noindex` et `canonical`, les deux signaux étant contradictoires.
 
 Par ordre de priorité.
 
-1. **Formulaire du premier rendez-vous non fonctionnel.** Dans
-   `poc/assets/js/main.js`, la soumission est interceptée et affiche
-   `alert("POC — la prise de RDV serait envoyée ici…")`. Sur un site en ligne,
-   un prospect qui remplit le formulaire ne déclenche donc **aucun** envoi, et
-   lit le mot « POC ». À brancher sur une vraie destination (Calendly, Wix
-   Bookings, ou à défaut un `mailto:` pré-rempli) avant toute promotion du site.
+1. **Formulaire du premier rendez-vous — branché, délivrabilité à confirmer.**
+   Le formulaire poste vers `poc/api/rdv.php`, exécuté sur l'hébergement
+   Infomaniak : chaque demande part par e-mail à
+   `coralie.schumpf@schumpf-avocat.com` (Reply-To vers le prospect,
+   pot-de-miel anti-spam), puis confirmation sur `merci.html`. Aucune donnée
+   ne transite par un service tiers.
+
+   **Après chaque déploiement touchant ce flux : faire une soumission de test
+   réelle** et vérifier qu'elle arrive en boîte de réception, pas en spam.
+   L'expéditeur `no-reply@schumpf-avocat.com` part du serveur Infomaniak alors
+   que le SPF du domaine est géré dans Wix : si le mail atterrit en spam, soit
+   ajouter l'hébergement Infomaniak au SPF (`include:spf.infomaniak.ch`), soit
+   mettre l'adresse en liste blanche côté messagerie. La préversion GitHub
+   Pages ne sait pas exécuter PHP : le formulaire ne s'y teste pas, seule la
+   mise en page s'y relit.
 2. **Mentions légales, RGPD, cookies absents.** 25 liens `href="#"` restent dans
    les pages, dont *Mentions légales*, *RGPD*, *Cookies* et *Méthode &
    honoraires* dans le pied de page de chaque page. Les mentions légales et

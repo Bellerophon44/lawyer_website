@@ -179,7 +179,11 @@ if (PREVIEW) {
     ['User-agent: *', 'Allow: /', '', `Sitemap: ${SITE_URL}/sitemap.xml`, ''].join('\n'),
   );
 
+  // Une page marquée noindex (merci.html, par exemple) ne va pas dans le
+  // sitemap : soumettre au référencement ce qu'on demande d'ignorer envoie
+  // deux signaux contradictoires.
   const pages = htmlFiles
+    .filter((out) => !/<meta[^>]*name="robots"[^>]*noindex/i.test(readFileSync(join(OUT, out), 'utf8')))
     .map((out) => ({ out, priority: PRIORITIES.find(([motif]) => motif.test(out))[1] }))
     .sort((a, b) => b.priority.localeCompare(a.priority) || a.out.localeCompare(b.out));
 
@@ -211,7 +215,9 @@ const placeholders = [];
 
 for (const file of htmlFiles) {
   const html = readFileSync(join(OUT, file), 'utf8');
-  for (const [, , value] of html.matchAll(/(href|src)="([^"]*)"/g)) {
+  // action= aussi : un formulaire qui poste vers un fichier absent est
+  // exactement le genre de lien mort que ce contrôle doit attraper.
+  for (const [, , value] of html.matchAll(/(href|src|action)="([^"]*)"/g)) {
     if (value === '#') {
       placeholders.push(file);
       continue;

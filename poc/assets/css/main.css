@@ -850,6 +850,18 @@ ul { margin: 0; padding: 0; list-style: none; }
   gap: var(--sp-5);
 }
 @media (max-width: 700px) { .diag-card { padding: var(--sp-5); } }
+
+/* Pot-de-miel anti-spam : hors écran plutôt que display:none, que certains
+   robots savent détecter. Invisible et inatteignable pour un humain
+   (aria-hidden + tabindex=-1 côté HTML). */
+.hp-champ {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .diag-card label { font-size: var(--fs-sm); color: var(--ink); display: block; margin-bottom: var(--sp-2); font-weight: 500; }
 .diag-card input,
 .diag-card select,

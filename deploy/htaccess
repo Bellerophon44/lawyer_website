@@ -47,6 +47,9 @@ DirectoryIndex index.html
 RedirectMatch 404 ^/backup(/|$)
 RedirectMatch 404 ^/index[-_](old|backup|new_pause|wix)
 
+# Identifiants SMTP du formulaire (config/rdv.secrets.php) : jamais servis.
+RedirectMatch 404 ^/config(/|$)
+
 # --- Adresse canonique : https://schumpf-avocat.com (apex, sans www) ------
 RewriteEngine On
 RewriteCond %{HTTPS} !=on [OR]

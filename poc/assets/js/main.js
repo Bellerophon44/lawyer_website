@@ -37,11 +37,20 @@
   // Ici, seulement un garde-fou contre le double clic pendant l'envoi.
   const form = document.querySelector('form[action$="rdv.php"]');
   if (form) {
+    const bouton = form.querySelector('button[type="submit"]');
+    const libelle = bouton ? bouton.textContent : '';
     form.addEventListener('submit', () => {
-      const bouton = form.querySelector('button[type="submit"]');
       if (bouton) {
         bouton.disabled = true;
         bouton.textContent = 'Envoi en cours…';
+      }
+    });
+    // Retour arrière du navigateur : la page peut revenir du cache avec le
+    // bouton encore désactivé. On le réarme.
+    window.addEventListener('pageshow', () => {
+      if (bouton) {
+        bouton.disabled = false;
+        bouton.textContent = libelle;
       }
     });
   }

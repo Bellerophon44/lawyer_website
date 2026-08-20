@@ -276,21 +276,36 @@ combiner `noindex` et `canonical`, les deux signaux étant contradictoires.
 
 Par ordre de priorité.
 
-1. **Formulaire du premier rendez-vous — branché, délivrabilité à confirmer.**
-   Le formulaire poste vers `poc/api/rdv.php`, exécuté sur l'hébergement
-   Infomaniak : chaque demande part par e-mail à
+1. **Formulaire du premier rendez-vous — branché, configuration serveur à
+   poser.** Le formulaire poste vers `poc/api/rdv.php`, exécuté sur
+   l'hébergement Infomaniak : chaque demande part par e-mail à
    `coralie.schumpf@schumpf-avocat.com` (Reply-To vers le prospect,
    pot-de-miel anti-spam), puis confirmation sur `merci.html`. Aucune donnée
    ne transite par un service tiers.
 
-   **Après chaque déploiement touchant ce flux : faire une soumission de test
-   réelle** et vérifier qu'elle arrive en boîte de réception, pas en spam.
-   L'expéditeur `no-reply@schumpf-avocat.com` part du serveur Infomaniak alors
-   que le SPF du domaine est géré dans Wix : si le mail atterrit en spam, soit
-   ajouter l'hébergement Infomaniak au SPF (`include:spf.infomaniak.ch`), soit
-   mettre l'adresse en liste blanche côté messagerie. La préversion GitHub
-   Pages ne sait pas exécuter PHP : le formulaire ne s'y teste pas, seule la
-   mise en page s'y relit.
+   **L'envoi passe par SMTP authentifié** — la fonction `mail()` de PHP est
+   désactivée sur les hébergements Infomaniak (constaté en production le
+   20/08/2026). Les identifiants ne sont pas dans le dépôt, qui est public :
+   ils vivent dans `/sites/schumpf-avocat.com/config/rdv.secrets.php`, créé
+   une fois à la main sur le serveur d'après le modèle
+   `deploy/rdv.secrets.exemple.php`. Ce fichier est exclu du miroir FTP (les
+   déploiements ne l'écrasent ni ne le suppriment) et `/config/` renvoie 404
+   depuis le web. Tant qu'il n'existe pas, le formulaire affiche proprement
+   « envoi momentanément indisponible » avec le téléphone du cabinet.
+
+   Mise en place, une seule fois :
+   1. créer une adresse d'envoi dédiée (par ex. `site@schumpf-avocat.com`)
+      dans le Service Mail Infomaniak, avec un mot de passe fort ;
+   2. copier le modèle sur le serveur et y mettre ce mot de passe ;
+   3. faire une soumission de test réelle et vérifier l'arrivée en boîte de
+      réception (pas en spam) — puis que « Répondre » écrit bien au prospect.
+
+   Envoyer via `mail.infomaniak.com` avec une adresse du domaine règle aussi
+   la question SPF/DKIM, à condition que la messagerie du domaine soit chez
+   Infomaniak. Si elle est ailleurs, le SPF (zone DNS chez Wix) doit inclure
+   `include:spf.infomaniak.ch`. La préversion GitHub Pages ne sait pas
+   exécuter PHP : le formulaire ne s'y teste pas, seule la mise en page s'y
+   relit.
 2. **Mentions légales, RGPD, cookies absents.** 25 liens `href="#"` restent dans
    les pages, dont *Mentions légales*, *RGPD*, *Cookies* et *Méthode &
    honoraires* dans le pied de page de chaque page. Les mentions légales et

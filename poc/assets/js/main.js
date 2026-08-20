@@ -33,12 +33,16 @@
     el.textContent = new Date().getFullYear();
   });
 
-  // Form diagnostic : préviens que c'est un POC
-  const form = document.querySelector('[data-poc-form]');
+  // Formulaire de rendez-vous : le POST est géré par api/rdv.php, sans JS.
+  // Ici, seulement un garde-fou contre le double clic pendant l'envoi.
+  const form = document.querySelector('form[action$="rdv.php"]');
   if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert("POC — la prise de RDV serait envoyée ici (Wix Bookings ou Calendly).");
+    form.addEventListener('submit', () => {
+      const bouton = form.querySelector('button[type="submit"]');
+      if (bouton) {
+        bouton.disabled = true;
+        bouton.textContent = 'Envoi en cours…';
+      }
     });
   }
 })();

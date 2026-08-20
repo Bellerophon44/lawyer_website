@@ -52,24 +52,24 @@
   </section>
 
   <section class="container fade-up" style="padding: var(--sp-9) 0;">
-    <form class="diag-card" data-poc-form>
+    <form class="diag-card" action="api/rdv.php" method="post">
       <h2 style="font-size: var(--fs-2xl); margin-bottom: var(--sp-3);">Décrivez la situation</h2>
       <p style="font-size: var(--fs-sm); color: var(--slate); margin: 0 0 var(--sp-3);">Quelques champs · 60 secondes · un créneau vous sera proposé sous 48 h ouvrées · règlement à l'issue du rendez-vous. Réservé aux dirigeants d'entreprise.</p>
 
       <div>
         <label for="topic">Le sujet principal</label>
         <div class="diag-card__choices">
-          <input type="radio" id="t1" name="topic" value="rupture" checked />
+          <input type="radio" id="t1" name="sujet" value="rupture" checked />
           <label for="t1">Rupture / licenciement</label>
-          <input type="radio" id="t2" name="topic" value="urssaf" />
+          <input type="radio" id="t2" name="sujet" value="urssaf" />
           <label for="t2">URSSAF</label>
-          <input type="radio" id="t3" name="topic" value="penal" />
+          <input type="radio" id="t3" name="sujet" value="penal" />
           <label for="t3">Pénal du travail</label>
-          <input type="radio" id="t4" name="topic" value="atmp" />
+          <input type="radio" id="t4" name="sujet" value="atmp" />
           <label for="t4">AT / MP · faute inexcusable</label>
-          <input type="radio" id="t5" name="topic" value="cse" />
+          <input type="radio" id="t5" name="sujet" value="cse" />
           <label for="t5">CSE · négociation</label>
-          <input type="radio" id="t6" name="topic" value="autre" />
+          <input type="radio" id="t6" name="sujet" value="autre" />
           <label for="t6">Autre</label>
         </div>
       </div>
@@ -77,18 +77,18 @@
       <div class="diag-card__row">
         <div>
           <label for="name">Votre nom</label>
-          <input type="text" id="name" required placeholder="Marc Dupont" />
+          <input type="text" id="name" name="nom" autocomplete="name" required placeholder="Marc Dupont" />
         </div>
         <div>
           <label for="company">Entreprise</label>
-          <input type="text" id="company" required placeholder="Acme Logistique" />
+          <input type="text" id="company" name="entreprise" autocomplete="organization" required placeholder="Acme Logistique" />
         </div>
       </div>
 
       <div class="diag-card__row">
         <div>
           <label for="effectif">Effectif</label>
-          <select id="effectif">
+          <select id="effectif" name="effectif">
             <option>1 – 10 salariés</option>
             <option selected>11 – 49 salariés</option>
             <option>50 – 249 salariés</option>
@@ -97,7 +97,7 @@
         </div>
         <div>
           <label for="urgency">Urgence</label>
-          <select id="urgency">
+          <select id="urgency" name="urgence">
             <option>Information générale</option>
             <option selected>Sujet à traiter dans le mois</option>
             <option>Sujet sensible · cette semaine</option>
@@ -109,17 +109,22 @@
       <div class="diag-card__row">
         <div>
           <label for="email">E-mail</label>
-          <input type="email" id="email" required placeholder="m.dupont@acme.fr" />
+          <input type="email" id="email" name="email" autocomplete="email" required placeholder="m.dupont@acme.fr" />
         </div>
         <div>
           <label for="phone">Téléphone</label>
-          <input type="tel" id="phone" placeholder="06 12 34 56 78" />
+          <input type="tel" id="phone" name="telephone" autocomplete="tel" placeholder="06 12 34 56 78" />
         </div>
       </div>
 
       <div>
         <label for="ctx">En quelques mots, le contexte (facultatif)</label>
-        <textarea id="ctx" rows="3" placeholder="Plan de licenciement envisagé, contrôle URSSAF en cours, accident grave sur site…"></textarea>
+        <textarea id="ctx" name="contexte" rows="3" placeholder="Plan de licenciement envisagé, contrôle URSSAF en cours, accident grave sur site…"></textarea>
+      </div>
+
+      <div class="hp-champ" aria-hidden="true">
+        <label for="site_web">Ne pas remplir ce champ</label>
+        <input type="text" id="site_web" name="site_web" tabindex="-1" autocomplete="off" />
       </div>
 
       <button type="submit" class="btn btn--primary" data-track="form-diag-submit">Réserver — 200 € HT forfait</button>

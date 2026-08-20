@@ -23,6 +23,12 @@ fusionné après lui est en attente de déploiement.
 
 ---
 
+## 2026-08-20
+
+| Modification | Demandé par | PR | Statut |
+|---|---|---|---|
+| Formulaire de rendez-vous branché : envoi par e-mail via PHP sur Infomaniak, page de confirmation, anti-spam. Le message « POC » disparaît. | Mathieu | #9 | validé — **test d'envoi réel à faire après déploiement** (cf. § 5 de la doc) |
+
 ## 2026-08-18
 
 | Modification | Demandé par | PR | Statut |
@@ -57,10 +63,6 @@ constatées sur le serveur :
 Ces deux chantiers ne sont pas ouverts. Ils sont documentés au § 5 de
 `docs/hebergement-infomaniak.md`.
 
-- **Formulaire de premier rendez-vous non fonctionnel.** Il intercepte la
-  soumission, n'envoie rien, et affiche le mot « POC » à un prospect. Demande
-  une décision sur la destination (Calendly, Wix Bookings, ou `mailto:`
-  pré-rempli). Relève de Mathieu.
 - **Mentions légales, RGPD et cookies absents.** 25 liens `href="#"` dans les
   pieds de page. Obligation légale, renforcée par le RIN. Le texte relève de
   Coralie ; la bannière cookies, qui est un mécanisme, relève de Mathieu.

@@ -27,7 +27,8 @@ fusionné après lui est en attente de déploiement.
 
 | Modification | Demandé par | PR | Statut |
 |---|---|---|---|
-| Correctif du formulaire : envoi par SMTP authentifié — `mail()` n'existe pas chez Infomaniak, constaté au test réel. Identifiants hors dépôt, dans `config/` sur le serveur. | Mathieu | #10 | validé — **config serveur + test réel à faire** (cf. § 5 de la doc) |
+| Configuration DNS e-mail du domaine : SPF créé (Google + Infomaniak — le domaine n'en avait aucun) et DKIM Infomaniak, dans la zone Wix. Adresse d'envoi `site@` créée, mot de passe d'appareil, identifiants posés sur le serveur. **Formulaire testé de bout en bout : le mail arrive chez Coralie.** | Mathieu | — | **déployé** (hors dépôt : DNS + serveur) |
+| Correctif du formulaire : envoi par SMTP authentifié — `mail()` n'existe pas chez Infomaniak, constaté au test réel. Identifiants hors dépôt, dans `config/` sur le serveur. | Mathieu | #10 | **déployé** |
 | Formulaire de rendez-vous branché : envoi par e-mail via PHP sur Infomaniak, page de confirmation, anti-spam. Le message « POC » disparaît. | Mathieu | #9 | **déployé** — a révélé l'absence de `mail()`, corrigé par #10 |
 
 ## 2026-08-18

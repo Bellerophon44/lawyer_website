@@ -289,7 +289,13 @@ valides), « Répondre » écrit au prospect.
 Le flux : `diagnostic.html` poste vers `api/rdv.php` (PHP sur l'hébergement),
 qui envoie la demande par SMTP authentifié via `mail.infomaniak.com` depuis
 `site@schumpf-avocat.com`, avec Reply-To vers le prospect, puis redirige vers
-`merci.html`. Pot-de-miel anti-spam. Aucune donnée de prospect ne transite par
+`merci.html`. Pot-de-miel anti-spam. Le prospect reçoit ensuite un **accusé de
+réception** automatique (From `site@`, Reply-To vers la boîte du cabinet,
+en-tête `Auto-Submitted`) : contenu quasi fixe — seul le libellé du sujet,
+issu d'une liste fermée, y est repris ; ni le nom ni le texte libre ne sont
+réinjectés, pour que ce mail envoyé vers une adresse saisie par le visiteur
+ne puisse pas relayer un contenu arbitraire. Son échec éventuel est
+journalisé mais ne fait pas échouer la demande. Aucune donnée de prospect ne transite par
 un service tiers. La fonction `mail()` de PHP n'existe pas chez Infomaniak —
 c'est pour cela que l'envoi est en SMTP.
 

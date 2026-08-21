@@ -23,6 +23,12 @@ fusionné après lui est en attente de déploiement.
 
 ---
 
+## 2026-08-21
+
+| Modification | Demandé par | PR | Statut |
+|---|---|---|---|
+| Accusé de réception automatique au prospect après soumission du formulaire (action B de l'audit). | Mathieu | #13 | validé |
+
 ## 2026-08-20
 
 | Modification | Demandé par | PR | Statut |
@@ -70,14 +76,11 @@ Ordre validé par Mathieu le 20/08/2026.
 1. **Google Search Console** — déclarer le domaine, soumettre le sitemap,
    demander l'indexation des 6 pages. Marche à suivre : § 6 bis de
    `docs/hebergement-infomaniak.md`.
-2. **B — Accusé de réception au prospect** : e-mail automatique de
-   confirmation après soumission du formulaire (second envoi dans
-   `api/rdv.php`, contenu fixe).
-3. **C — Analytics par les logs serveur** : GoAccess sur `~/ik-logs/`,
+2. **C — Analytics par les logs serveur** : GoAccess sur `~/ik-logs/`,
    zéro cookie donc zéro bannière. Conversions = `POST /api/rdv.php` en 303.
-4. **Gabarit de page article** pour les Décryptages (préalable à la mise en
+3. **Gabarit de page article** pour les Décryptages (préalable à la mise en
    ligne du premier article).
-5. **Registraire du domaine à identifier** (`whois schumpf-avocat.com`) :
+4. **Registraire du domaine à identifier** (`whois schumpf-avocat.com`) :
    qui détient l'enregistrement, qui paie le renouvellement, quand expire-t-il.
 
 **Côté Coralie (contenu et identité)** — liste détaillée dans `CLAUDE.md`,

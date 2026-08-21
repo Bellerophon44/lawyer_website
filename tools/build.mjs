@@ -148,6 +148,99 @@ if (PREVIEW) {
   log(`préversion : noindex posé sur ${htmlFiles.length} pages`);
 }
 
+/* --------------------------- 2 ter. balisage SEO (production uniquement) */
+
+// Canonical, Open Graph et données structurées. Jamais en préversion : elle
+// est noindex, et Google demande de ne pas combiner noindex et canonical.
+// Tout est dérivé du contenu des pages (titre, description, FAQ) : une page
+// modifiée ou ajoutée est balisée sans toucher à ce script.
+if (!PREVIEW) {
+  const jsonLd = (obj) =>
+    `  <script type="application/ld+json">${JSON.stringify(obj).replace(/</g, '\\u003c')}</script>\n`;
+
+  const CABINET = {
+    '@context': 'https://schema.org',
+    '@type': 'LegalService',
+    name: 'Cabinet Coralie Schumpf',
+    url: `${SITE_URL}/`,
+    image: `${SITE_URL}/assets/img/og-cover.jpg`,
+    telephone: '+33769004558',
+    email: 'coralie.schumpf@schumpf-avocat.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '4 rue Paul Langevin',
+      postalCode: '57070',
+      addressLocality: 'Metz',
+      addressCountry: 'FR',
+    },
+    founder: { '@type': 'Person', name: 'Coralie Schumpf', jobTitle: 'Avocate au Barreau de Metz' },
+    knowsAbout: ['Droit du travail', 'Droit pénal du travail', 'Droit de la sécurité sociale', 'URSSAF'],
+    sameAs: [
+      'https://fr.linkedin.com/in/coralie-schumpf-4311549a',
+      'https://www.instagram.com/schumpfcoralieavocat/',
+    ],
+  };
+
+  const AVOCATE = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Coralie Schumpf',
+    jobTitle: 'Avocate au Barreau de Metz',
+    url: `${SITE_URL}/cabinet/coralie-schumpf.html`,
+    image: `${SITE_URL}/assets/img/coralie-schumpf.jpg`,
+    worksFor: { '@type': 'LegalService', name: 'Cabinet Coralie Schumpf', url: `${SITE_URL}/` },
+    sameAs: CABINET.sameAs,
+  };
+
+  const texteBrut = (html) => html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+
+  let balisees = 0;
+  for (const file of htmlFiles) {
+    const path = join(OUT, file);
+    let html = readFileSync(path, 'utf8');
+    // Une page noindex (merci.html) reste hors de tout balisage public.
+    if (/<meta[^>]*name="robots"[^>]*noindex/i.test(html)) continue;
+
+    const loc = file === 'index.html' ? `${SITE_URL}/` : `${SITE_URL}/${file}`;
+    const titre = texteBrut(html.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? 'Cabinet Coralie Schumpf');
+    const desc = html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? '';
+
+    let tete = `  <link rel="canonical" href="${loc}" />\n`;
+    for (const [p, c] of [
+      ['og:type', 'website'],
+      ['og:locale', 'fr_FR'],
+      ['og:site_name', 'Cabinet Coralie Schumpf'],
+      ['og:title', titre],
+      ['og:description', desc],
+      ['og:url', loc],
+      ['og:image', `${SITE_URL}/assets/img/og-cover.jpg`],
+      ['og:image:width', '1200'],
+      ['og:image:height', '630'],
+    ]) {
+      tete += `  <meta property="${p}" content="${c.replace(/"/g, '&quot;')}" />\n`;
+    }
+    tete += '  <meta name="twitter:card" content="summary_large_image" />\n';
+
+    if (file === 'index.html') tete += jsonLd(CABINET);
+    if (file === 'cabinet/coralie-schumpf.html') tete += jsonLd(AVOCATE);
+
+    // FAQ : dérivée des <details> réellement présents dans la page.
+    const faq = [...html.matchAll(/<details>\s*<summary>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g)]
+      .map(([, q, a]) => ({
+        '@type': 'Question',
+        name: texteBrut(q),
+        acceptedAnswer: { '@type': 'Answer', text: texteBrut(a) },
+      }));
+    if (faq.length) {
+      tete += jsonLd({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq });
+    }
+
+    writeFileSync(path, html.replace('</head>', `${tete}</head>`));
+    balisees += 1;
+  }
+  log(`build : canonical + Open Graph sur ${balisees} pages, JSON-LD dérivé du contenu`);
+}
+
 /* ------------------------------------------- 3. .htaccess, robots, sitemap */
 
 if (PREVIEW) {
@@ -225,8 +318,12 @@ for (const file of htmlFiles) {
     if (/^(https?:|mailto:|tel:|#|data:|\/\/)/.test(value)) continue;
     const target = value.split(/[#?]/)[0];
     if (!target) continue;
-    const resolved = posix.normalize(posix.join(posix.dirname(file), target));
-    if (!built.has(resolved)) broken.push(`${file} -> ${value}`);
+    // Chemin absolu (page 404, servie à n'importe quelle profondeur) :
+    // résolu depuis la racine du site ; « / » est la page d'accueil.
+    const resolved = target.startsWith('/')
+      ? posix.normalize(target.slice(1)) || 'index.html'
+      : posix.normalize(posix.join(posix.dirname(file), target));
+    if (!built.has(resolved === '.' ? 'index.html' : resolved)) broken.push(`${file} -> ${value}`);
   }
 }
 

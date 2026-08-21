@@ -10,15 +10,23 @@ ce qui est désormais automatisé dans ce dépôt.
 
 | Élément | Prestataire | Où l'administrer |
 |---|---|---|
-| Nom de domaine `schumpf-avocat.com` | **Wix** (registraire) | Wix > Domaines > DNS |
-| Zone DNS | **Wix** | Wix > Domaines > DNS |
+| Nom de domaine `schumpf-avocat.com` | **un registraire tiers, à identifier** (Wix affiche « géré par un tiers ») | à déterminer — `whois schumpf-avocat.com` donne le registraire et la date d'expiration |
+| Zone DNS (A, MX, TXT…) | **Wix** (serveurs de noms `ns10/ns11.wixdns.net`, vérifié le 20/08/2026) | Wix > Paramètres > Domaines > ⋯ > Gérer les enregistrements DNS |
+| Boîtes e-mail (`coralie.schumpf@…`) | **Google Workspace** (MX `aspmx.l.google.com`, vérifié le 20/08/2026) | admin.google.com |
+| Adresse d'envoi du formulaire (`site@…`) | **Infomaniak** (Service Mail, émission seule) | Manager > Service Mail |
 | Hébergement des fichiers du site | **Infomaniak** (Hébergement Web, Apache/PHP) | [ksuite.infomaniak.com](https://ksuite.infomaniak.com) > Hébergement Web |
 | Certificat SSL | **Infomaniak** (Let's Encrypt gratuit) | Manager > Hébergement Web > Certificat SSL |
-| Emails | inchangé (MX/SPF/DKIM/DMARC restés dans Wix) | Wix > Domaines > DNS |
 | Code source du site | **ce dépôt Git** | GitHub |
 
-Le domaine est donc **encore chez Wix**, mais le site n'est plus servi par Wix :
-les DNS Wix pointent vers l'IP Infomaniak.
+La zone DNS se gère donc dans Wix, mais le site n'est plus servi par Wix : le
+A record pointe vers l'IP Infomaniak. Dans Wix, le bandeau rouge « votre
+domaine pointe en dehors de Wix » décrit cet état voulu — ne pas cliquer
+« Réessayer » ni « Transférer vers Wix », qui déferaient la migration.
+
+⚠️ **Point à traiter un jour calme : identifier le registraire.** Le domaine
+est enregistré chez un tiers inconnu — si ce compte est perdu et que le
+domaine expire, le site et les e-mails tombent ensemble. Retrouver le
+registraire (`whois`), le compte, et la date d'expiration.
 
 ### Infomaniak en deux mots
 
@@ -272,61 +280,72 @@ combiner `noindex` et `canonical`, les deux signaux étant contradictoires.
 
 ---
 
+### 4.7 Le formulaire de premier rendez-vous
+
+**En service depuis le 20/08/2026, testé de bout en bout** : soumission sur le
+site → e-mail dans la boîte Google de Coralie (boîte de réception, SPF et DKIM
+valides), « Répondre » écrit au prospect.
+
+Le flux : `diagnostic.html` poste vers `api/rdv.php` (PHP sur l'hébergement),
+qui envoie la demande par SMTP authentifié via `mail.infomaniak.com` depuis
+`site@schumpf-avocat.com`, avec Reply-To vers le prospect, puis redirige vers
+`merci.html`. Pot-de-miel anti-spam. Aucune donnée de prospect ne transite par
+un service tiers. La fonction `mail()` de PHP n'existe pas chez Infomaniak —
+c'est pour cela que l'envoi est en SMTP.
+
+**Les pièces, et où elles vivent :**
+
+| Pièce | Où | Note |
+|---|---|---|
+| Identifiants SMTP | `/sites/schumpf-avocat.com/config/rdv.secrets.php`, sur le serveur uniquement | modèle : `deploy/rdv.secrets.exemple.php` ; exclu du miroir FTP, `/config/` en 404 web |
+| Mot de passe utilisé | « mot de passe d'appareil » Infomaniak, appareil **« Site web — formulaire RDV » (sans utilisateur)** | Manager > Service Mail > `site@` > Appareil connecté ; le mot de passe principal de l'adresse ne fonctionne PAS en SMTP |
+| Adresse d'envoi | `site@schumpf-avocat.com` | émission seule : les MX du domaine pointent vers Google, elle ne reçoit rien |
+| SPF | TXT chez Wix : `v=spf1 include:_spf.google.com include:spf.infomaniak.ch ~all` | autorise Google (Coralie) ET Infomaniak (le site) — ne jamais le remplacer par la version « officielle » d'un seul des deux |
+| DKIM | TXT `20260820._domainkey` chez Wix | clé publiée par Infomaniak |
+
+**États normaux à ne pas « corriger » :** dans Infomaniak, le domaine reste
+« partiellement connecté » — DKIM vert, SPF/MX/CNAME orange — parce que les MX
+restent chez Google, c'est voulu. Dans Wix, le bandeau rouge « votre domaine
+pointe en dehors de Wix » décrit la migration, pas une panne.
+
+**Dépannage :** un échec d'envoi affiche au visiteur une page neutre avec le
+téléphone du cabinet, et la cause exacte est journalisée — la retrouver avec
+`grep -rh "rdv.php" ~/ik-logs/ | tail`. Pour tester les identifiants sans
+passer par le site : `curl --url smtps://mail.infomaniak.com:465 --user ...`
+(voir l'historique de la mise en place). Pour révoquer l'accès du site :
+supprimer l'appareil dans le Manager et en générer un nouveau.
+
+### 4.8 Balisage SEO et redirections (pack du 20/08/2026)
+
+- **Redirections 301** des anciennes URL Wix (`/reserver-en-ligne`,
+  `/droit-du-travail`, `/droit-penal-du-travail`,
+  `/droit-de-la-securite-sociale`) dans `deploy/htaccess` — elles étaient en
+  404 alors que Google les indexe encore.
+- **Canonical, Open Graph et JSON-LD** (`LegalService`, `Person`, `FAQPage`)
+  injectés par le build en production uniquement — jamais en préversion, qui
+  est noindex. Tout est dérivé du contenu des pages : une FAQ modifiée par
+  Coralie met à jour le balisage toute seule au build suivant.
+- **Image de partage** `assets/img/og-cover.jpg` (1200×630), **favicons**
+  (SVG + `favicon.ico` racine + icône Apple), **page 404** dans la charte
+  (`poc/404.html`, styles inline et liens absolus car servie à n'importe
+  quelle profondeur), **en-têtes de sécurité** de base dans le `.htaccess`.
+
+---
+
 ## 5. À traiter avant de considérer le site fini
 
 Par ordre de priorité.
 
-1. **Formulaire du premier rendez-vous — branché, configuration serveur à
-   poser.** Le formulaire poste vers `poc/api/rdv.php`, exécuté sur
-   l'hébergement Infomaniak : chaque demande part par e-mail à
-   `coralie.schumpf@schumpf-avocat.com` (Reply-To vers le prospect,
-   pot-de-miel anti-spam), puis confirmation sur `merci.html`. Aucune donnée
-   ne transite par un service tiers.
-
-   **L'envoi passe par SMTP authentifié** — la fonction `mail()` de PHP est
-   désactivée sur les hébergements Infomaniak (constaté en production le
-   20/08/2026). Les identifiants ne sont pas dans le dépôt, qui est public :
-   ils vivent dans `/sites/schumpf-avocat.com/config/rdv.secrets.php`, créé
-   une fois à la main sur le serveur d'après le modèle
-   `deploy/rdv.secrets.exemple.php`. Ce fichier est exclu du miroir FTP (les
-   déploiements ne l'écrasent ni ne le suppriment) et `/config/` renvoie 404
-   depuis le web. Tant qu'il n'existe pas, le formulaire affiche proprement
-   « envoi momentanément indisponible » avec le téléphone du cabinet.
-
-   Mise en place, une seule fois :
-   1. créer une adresse d'envoi dédiée (par ex. `site@schumpf-avocat.com`)
-      dans le Service Mail Infomaniak, avec un mot de passe fort ;
-   2. copier le modèle sur le serveur et y mettre ce mot de passe ;
-   3. faire une soumission de test réelle et vérifier l'arrivée en boîte de
-      réception (pas en spam) — puis que « Répondre » écrit bien au prospect.
-
-   Envoyer via `mail.infomaniak.com` avec une adresse du domaine règle aussi
-   la question SPF/DKIM, à condition que la messagerie du domaine soit chez
-   Infomaniak. Si elle est ailleurs, le SPF (zone DNS chez Wix) doit inclure
-   `include:spf.infomaniak.ch`. La préversion GitHub Pages ne sait pas
-   exécuter PHP : le formulaire ne s'y teste pas, seule la mise en page s'y
-   relit.
-2. **Mentions légales, RGPD, cookies absents.** 25 liens `href="#"` restent dans
+1. **Mentions légales, RGPD, cookies absents.** 25 liens `href="#"` restent dans
    les pages, dont *Mentions légales*, *RGPD*, *Cookies* et *Méthode &
    honoraires* dans le pied de page de chaque page. Les mentions légales et
    l'identité de l'hébergeur sont des obligations, renforcées par le RIN pour
    un avocat : nom du cabinet, adresse, barreau de Metz, directeur de
    publication, hébergeur (Infomaniak SA, Genève).
-3. **SSL avant `.htaccess`.** `deploy/htaccess` force HTTPS et la redirection
-   `www` → apex. Il ne doit être déployé qu'une fois le certificat installé sur
-   les deux variantes du domaine, sinon le site paraît bloqué alors que les
-   fichiers sont bons. En cas de doute, vérifier le cadenas sur les deux URL
-   avant le premier déploiement.
-4. **Polices Google externes.** Les six pages chargent Fraunces et Inter depuis
+2. **Polices Google externes.** Les six pages chargent Fraunces et Inter depuis
    `fonts.googleapis.com`. À auto-héberger dans `assets/fonts/` : performance,
    et un transfert d'IP vers Google en moins à déclarer côté RGPD.
-5. **Balises `canonical` et Open Graph** absentes de toutes les pages. Utile
-   maintenant que l'adresse canonique est arrêtée sur l'apex.
-6. **Redirections depuis les anciennes URL Wix.** Les URL de l'ancien site
-   indexées par Google renvoient une 404. Les identifier via
-   `data/analytics/wix-traffic-pages-full-12m.csv` et ajouter les `Redirect 301`
-   correspondants dans `deploy/htaccess`.
-7. **Analytics.** L'instrumentation est simulée (`console.log` sur
+3. **Analytics.** L'instrumentation est simulée (`console.log` sur
    `data-track`). À remplacer par GA4 ou une alternative sans cookie
    (Plausible, Matomo), ce qui simplifie la bannière cookies.
 

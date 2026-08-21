@@ -351,6 +351,32 @@ Par ordre de priorité.
 
 ---
 
+## 6 bis. Google Search Console
+
+Le canal officiel entre le site et Google : indexation, requêtes réelles,
+erreurs. À déclarer une fois, sous le compte Google de Mathieu (ajouter
+Coralie en propriétaire ensuite : Paramètres > Utilisateurs et autorisations).
+
+1. [search.google.com/search-console](https://search.google.com/search-console)
+   > *Ajouter une propriété* > type **« Domaine »** > `schumpf-avocat.com`.
+   Le type « Domaine » couvre d'un coup apex, www, http et https.
+2. Google fournit un enregistrement `google-site-verification=…` : l'ajouter
+   en **TXT** dans la zone DNS (Wix > Paramètres > Domaines > ⋯ > Gérer les
+   enregistrements DNS), Host vide, valeur complète. Même geste que le SPF.
+3. Retour dans la Search Console > *Vérifier*. Si échec, attendre quelques
+   minutes (propagation) et réessayer — ne pas recréer l'enregistrement.
+4. Une fois vérifié : **Sitemaps** > soumettre
+   `https://schumpf-avocat.com/sitemap.xml`.
+5. **Inspection d'URL** : coller chacune des 6 pages publiques et *Demander
+   une indexation* (accueil, 3 expertises, fiche avocate, diagnostic).
+6. Les semaines suivantes, surveiller : *Pages* (les 6 indexées, les
+   anciennes URL Wix comptées comme redirections et non comme 404) et
+   *Performances* (les requêtes réelles — donnée disponible nulle part
+   ailleurs).
+
+L'enregistrement TXT doit rester en place : Google revérifie
+périodiquement.
+
 ## 6. Ce dont il faut garder trace
 
 - Une capture de la zone DNS Wix, avant et après modification.

@@ -61,11 +61,28 @@ constatées sur le serveur :
 
 ---
 
-## Reste à traiter
+## Reste à traiter — file d'attente
 
-Ces deux chantiers ne sont pas ouverts. Ils sont documentés au § 5 de
-`docs/hebergement-infomaniak.md`.
+Ordre validé par Mathieu le 20/08/2026.
 
-- **Mentions légales, RGPD et cookies absents.** 25 liens `href="#"` dans les
-  pieds de page. Obligation légale, renforcée par le RIN. Le texte relève de
-  Coralie ; la bannière cookies, qui est un mécanisme, relève de Mathieu.
+**Côté Mathieu (technique)**
+
+1. **Google Search Console** — déclarer le domaine, soumettre le sitemap,
+   demander l'indexation des 6 pages. Marche à suivre : § 6 bis de
+   `docs/hebergement-infomaniak.md`.
+2. **B — Accusé de réception au prospect** : e-mail automatique de
+   confirmation après soumission du formulaire (second envoi dans
+   `api/rdv.php`, contenu fixe).
+3. **C — Analytics par les logs serveur** : GoAccess sur `~/ik-logs/`,
+   zéro cookie donc zéro bannière. Conversions = `POST /api/rdv.php` en 303.
+4. **Gabarit de page article** pour les Décryptages (préalable à la mise en
+   ligne du premier article).
+5. **Registraire du domaine à identifier** (`whois schumpf-avocat.com`) :
+   qui détient l'enregistrement, qui paie le renouvellement, quand expire-t-il.
+
+**Côté Coralie (contenu et identité)** — liste détaillée dans `CLAUDE.md`,
+section « File d'attente Coralie » :
+
+1. Mentions légales, politique de confidentialité, texte cookies.
+2. Fiche Google Business Profile (avec décision sur les avis clients).
+3. Relecture du premier Décryptage (brief URSSAF de juin, jamais produit).

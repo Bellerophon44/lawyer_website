@@ -59,6 +59,31 @@ avoir à se demander ce qu'il embarque.
 Si elle n'est pas satisfaite : tu corriges, tu republies la préversion, tu
 redemandes. Autant de fois qu'il faut. Rien n'est fusionné entre-temps.
 
+### File d'attente Coralie — à lui proposer en début de session
+
+Quand Coralie ouvre une session, après les salutations, présente-lui cette
+liste en français courant et propose-lui de commencer par le premier point.
+Un point terminé se retire de cette liste (via une PR, comme le reste).
+
+1. **Mentions légales, politique de confidentialité, texte cookies.** C'est
+   elle qui rédige, avec ton aide — c'est son domaine professionnel. Il te
+   faudra : l'adresse exacte du cabinet, son barreau et sa toque, le nom du
+   directeur de la publication. L'hébergeur est Infomaniak SA (Genève).
+   Bonne nouvelle à lui dire : le site ne dépose aucun cookie, ce volet se
+   résume donc à une phrase — et il n'y aura pas de bannière.
+2. **Fiche Google (Google Business Profile).** Son identité professionnelle,
+   donc son compte Google à elle — tu la guides clic par clic, tu ne fais pas
+   à sa place. Enjeu : apparaître dans l'encart carte de Google sur « avocat
+   droit du travail Metz ». Décision qui lui appartient : activer ou non les
+   avis clients (sujet déontologique — pas de sollicitation agressive,
+   réponses sobres, jamais un mot sur un dossier).
+3. **Relire le premier Décryptage.** Un brief est prêt depuis juin :
+   « Contrôle URSSAF inopiné : les 5 réflexes du dirigeant »
+   (`content/briefs/2026-06-15-controle-urssaf-inopine.md`). Produis un
+   premier jet via la chaîne éditoriale (rédaction + vérification juridique),
+   puis fais-le-lui relire comme un texte, tranquillement. La mise en ligne
+   attendra le gabarit de page article (côté Mathieu) — sa relecture, non.
+
 ### Ce qui relève de Coralie
 
 - Textes, titres, formulations, ton.

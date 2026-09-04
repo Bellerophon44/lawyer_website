@@ -230,4 +230,54 @@ try {
     erreur('L’envoi a échoué de notre côté. Appelez le cabinet ou réessayez dans quelques minutes.', 500);
 }
 
+// Accusé de réception au prospect. Contenu volontairement quasi fixe : seule
+// donnée saisie reprise, le libellé du sujet — qui sort d'une liste fermée
+// (SUJETS). Ni le nom ni le contexte libre ne sont réinjectés, pour que ce
+// mail, envoyé vers une adresse fournie par le visiteur, ne puisse pas servir
+// à relayer un texte arbitraire.
+// Son échec ne fait pas échouer la demande : le cabinet a déjà reçu le
+// message, c'est lui qui compte. On journalise et on continue.
+$objetAr = mb_encode_mimeheader('Votre demande de rendez-vous — Cabinet Coralie Schumpf', 'UTF-8', 'B');
+
+$corpsAr = implode("\n", [
+    'Bonjour,',
+    '',
+    'Votre demande de premier rendez-vous (' . $sujet . ') est bien arrivée au',
+    'Cabinet Coralie Schumpf.',
+    '',
+    'Un créneau vous sera proposé sous 48 heures ouvrées, par e-mail ou par',
+    'téléphone, à partir des informations transmises. Elles sont',
+    'confidentielles et couvertes par le secret professionnel de l’avocat.',
+    '',
+    'Si le sujet ne peut pas attendre : 07 69 00 45 58.',
+    '',
+    'Cabinet Coralie Schumpf',
+    'Avocate au Barreau de Metz — au service exclusif des employeurs',
+    '4 rue Paul Langevin · 57070 Metz',
+    'https://schumpf-avocat.com',
+    '',
+    '—',
+    'Message automatique envoyé suite à une demande déposée sur',
+    'schumpf-avocat.com le ' . date('d/m/Y à H:i') . '. Si vous n’êtes pas à',
+    'l’origine de cette demande, ignorez simplement ce message.',
+]);
+
+$entetesAr = implode("\r\n", [
+    'From: Cabinet Coralie Schumpf <' . $cfg['expediteur'] . '>',
+    'To: ' . $email,
+    'Reply-To: ' . DESTINATAIRE,
+    'Subject: ' . $objetAr,
+    'Date: ' . date(DATE_RFC2822),
+    'Auto-Submitted: auto-replied',
+    'MIME-Version: 1.0',
+    'Content-Type: text/plain; charset=utf-8',
+    'Content-Transfer-Encoding: 8bit',
+]);
+
+try {
+    smtp_envoyer($cfg, $email, $entetesAr, $corpsAr);
+} catch (Throwable $e) {
+    error_log('rdv.php (accusé de réception) : ' . $e->getMessage());
+}
+
 rediriger(PAGE_MERCI);

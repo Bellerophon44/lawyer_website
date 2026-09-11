@@ -27,7 +27,7 @@ fusionné après lui est en attente de déploiement.
 
 | Modification | Demandé par | PR | Statut |
 |---|---|---|---|
-| Accusé de réception automatique au prospect après soumission du formulaire (action B de l'audit). | Mathieu | #13 | validé |
+| Accusé de réception automatique au prospect après soumission du formulaire (action B de l'audit). | Mathieu | #13 | **déployé** — test réel du 11/09 : l'accusé arrive chez le prospect, la demande chez Coralie |
 
 ## 2026-08-20
 

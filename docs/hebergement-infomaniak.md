@@ -284,7 +284,8 @@ combiner `noindex` et `canonical`, les deux signaux étant contradictoires.
 
 **En service depuis le 20/08/2026, testé de bout en bout** : soumission sur le
 site → e-mail dans la boîte Google de Coralie (boîte de réception, SPF et DKIM
-valides), « Répondre » écrit au prospect.
+valides), « Répondre » écrit au prospect. L'accusé de réception au prospect a
+été ajouté et testé de la même façon le 11/09/2026.
 
 Le flux : `diagnostic.html` poste vers `api/rdv.php` (PHP sur l'hébergement),
 qui envoie la demande par SMTP authentifié via `mail.infomaniak.com` depuis

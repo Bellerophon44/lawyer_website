@@ -50,6 +50,11 @@ RedirectMatch 404 ^/index[-_](old|backup|new_pause|wix)
 # Identifiants SMTP du formulaire (config/rdv.secrets.php) : jamais servis.
 RedirectMatch 404 ^/config(/|$)
 
+# Outils d'exploitation (outils/stats.php) : en ligne de commande uniquement.
+# Le script refuse déjà de s'exécuter via le web ; ce 404 évite en plus de
+# révéler son existence.
+RedirectMatch 404 ^/outils(/|$)
+
 # --- Anciennes URL Wix, encore indexées par Google ------------------------
 # Chiffres des 12 derniers mois Wix (data/analytics/) : /reserver-en-ligne
 # était la 2e page la plus visitée (115 vues). Sans ces redirections, chaque

@@ -339,6 +339,59 @@ supprimer l'appareil dans le Manager et en générer un nouveau.
 
 ---
 
+### 4.9 Statistiques de fréquentation
+
+Le site ne dépose **aucun cookie** et ne charge aucun script de mesure : pas de
+Google Analytics, pas de bannière de consentement. Les statistiques sont
+calculées sur le serveur, à partir des journaux qu'Apache écrit déjà dans
+`~/ik-logs/`, par `outils/stats.php` (source : `tools/stats.php`).
+
+Depuis la console SSH :
+
+```bash
+php ~/sites/schumpf-avocat.com/outils/stats.php              # 30 derniers jours
+php ~/sites/schumpf-avocat.com/outils/stats.php --jours=7    # la semaine
+php ~/sites/schumpf-avocat.com/outils/stats.php --robots     # robots inclus
+```
+
+Le rapport donne : visiteurs, sessions (coupure après 30 min d'inactivité),
+pages vues, **demandes de rendez-vous transmises** et taux de conversion
+(un `POST /api/rdv.php` répondant 303), soumissions **en échec** à examiner,
+pages les plus consultées, **origine des sessions** (moteur, réseau social,
+site référent, accès direct) et courbe quotidienne.
+
+**À savoir pour lire les chiffres :**
+
+- **Les canaux se mesurent à l'entrée de la session**, pas à chaque page : sinon
+  la navigation interne apparaîtrait comme première « source » du site, ce qui
+  ne dit rien d'où viennent les visiteurs.
+- **Un visiteur est une paire adresse IP + navigateur.** Deux personnes derrière
+  la même box avec le même navigateur comptent pour une, et une personne qui
+  change de réseau (Wi-Fi puis 4G) pour deux. C'est une approximation honnête,
+  pas une mesure d'individus — la contrepartie assumée de l'absence de cookie.
+- **Les robots sont exclus par défaut** (moteurs de recherche, aperçus de
+  liens, outils de surveillance). Le nombre écarté est affiché en pied de
+  rapport.
+- **Infomaniak ne conserve les journaux qu'environ un mois.** Au-delà, il n'y a
+  plus de données. Pour une courbe sur l'année, noter les chiffres du rapport
+  chaque mois (par exemple dans ce dépôt, sous `data/analytics/`).
+- Les adresses IP ne servent qu'à regrouper les visites le temps du calcul :
+  aucune n'est affichée ni conservée.
+
+Le script s'exécute **en ligne de commande uniquement** : il refuse de
+répondre s'il est appelé depuis le web, et `/outils/` est de plus renvoyé en
+404 par le `.htaccess`. Deux protections indépendantes.
+
+**Point de comparaison.** Les 12 mois d'analytics Wix archivés dans
+`data/analytics/` donnent la référence d'avant la migration : **870 sessions
+sur l'année, dont 484 depuis Google — environ 72 par mois**. Un volume modeste,
+donc facile à doubler : à regarder dans les mois qui viennent pour juger de
+l'effet du pack SEO et de la Search Console. (Les sessions Wix et celles de ce
+script ne sont pas strictement comparables — outils et définitions de
+« visiteur » différents — mais l'ordre de grandeur l'est.)
+
+---
+
 ## 5. À traiter avant de considérer le site fini
 
 Par ordre de priorité.
@@ -352,10 +405,6 @@ Par ordre de priorité.
 2. **Polices Google externes.** Les six pages chargent Fraunces et Inter depuis
    `fonts.googleapis.com`. À auto-héberger dans `assets/fonts/` : performance,
    et un transfert d'IP vers Google en moins à déclarer côté RGPD.
-3. **Analytics.** L'instrumentation est simulée (`console.log` sur
-   `data-track`). À remplacer par GA4 ou une alternative sans cookie
-   (Plausible, Matomo), ce qui simplifie la bannière cookies.
-
 ---
 
 ## 6 bis. Google Search Console

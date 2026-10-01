@@ -23,6 +23,12 @@ fusionné après lui est en attente de déploiement.
 
 ---
 
+## 2026-10-01
+
+| Modification | Demandé par | PR | Statut |
+|---|---|---|---|
+| Statistiques de fréquentation sans cookie, calculées sur les journaux du serveur (`outils/stats.php`) : visiteurs, sessions, conversions, canaux, pages. Action C de l'audit. | Mathieu | #15 | validé |
+
 ## 2026-08-21
 
 | Modification | Demandé par | PR | Statut |
@@ -76,11 +82,9 @@ Ordre validé par Mathieu le 20/08/2026.
 1. **Google Search Console** — déclarer le domaine, soumettre le sitemap,
    demander l'indexation des 6 pages. Marche à suivre : § 6 bis de
    `docs/hebergement-infomaniak.md`.
-2. **C — Analytics par les logs serveur** : GoAccess sur `~/ik-logs/`,
-   zéro cookie donc zéro bannière. Conversions = `POST /api/rdv.php` en 303.
-3. **Gabarit de page article** pour les Décryptages (préalable à la mise en
+2. **Gabarit de page article** pour les Décryptages (préalable à la mise en
    ligne du premier article).
-4. **Registraire du domaine à identifier** (`whois schumpf-avocat.com`) :
+3. **Registraire du domaine à identifier** (`whois schumpf-avocat.com`) :
    qui détient l'enregistrement, qui paie le renouvellement, quand expire-t-il.
 
 **Côté Coralie (contenu et identité)** — liste détaillée dans `CLAUDE.md`,

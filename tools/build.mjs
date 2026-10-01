@@ -267,6 +267,12 @@ if (PREVIEW) {
     log('build : .htaccess ajouté');
   }
 
+  // Statistiques de fréquentation : elles lisent les journaux du serveur, donc
+  // le script doit y être. Déposé dans outils/, que le .htaccess renvoie en 404.
+  mkdirSync(join(OUT, 'outils'), { recursive: true });
+  cpSync(join(ROOT, 'tools', 'stats.php'), join(OUT, 'outils', 'stats.php'));
+  log('build : outils/stats.php ajouté (fermé au web)');
+
   writeFileSync(
     join(OUT, 'robots.txt'),
     ['User-agent: *', 'Allow: /', '', `Sitemap: ${SITE_URL}/sitemap.xml`, ''].join('\n'),
